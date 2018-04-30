@@ -9,9 +9,10 @@ import { AppComponent } from './components/app/app.component';
 // Redux
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { createEpicMiddleware, combineEpics } from "redux-observable";
+import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { IAppState, rootReducer } from './redux/store';
+import { MaterialModule } from './modules/material/material.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { IAppState, rootReducer } from './redux/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     HttpClientModule,
