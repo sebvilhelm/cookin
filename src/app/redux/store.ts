@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux';
 
-export class State {
-  state?: boolean;
-}
-
 export class IAppState {
-  state?: State;
 
 }
 
