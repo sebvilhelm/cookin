@@ -32,23 +32,23 @@ import { MaterialModule } from './modules/material/material.module';
 })
 export class AppModule {
 
-  /*   constructor(
-      private ngRedux: NgRedux<IAppState>,
-      private devTool: DevToolsExtension,
-      private ngReduxRouter: NgReduxRouter
-    ) {
-  
-      const enhancers = [devTool.enhancer()];
-      const middleware = [];
-  
-      this.ngRedux.configureStore(
-        rootReducer,
-        {},
-        middleware,
-        enhancers
-      );
-  
-      ngReduxRouter.initialize();
-    } */
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter
+  ) {
+
+    const enhancers = [devTool.enhancer()];
+    const middleware = [];
+
+    this.ngRedux.configureStore(
+      rootReducer,
+      {},
+      middleware,
+      enhancers
+    );
+
+    ngReduxRouter.initialize();
+  }
 
 }
