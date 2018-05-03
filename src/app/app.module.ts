@@ -16,6 +16,7 @@ import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,14 +49,14 @@ export class AppModule {
     const enhancers = [devTool.enhancer()];
     const middleware = [];
 
-    this.ngRedux.configureStore(
+    /* this.ngRedux.configureStore(
       rootReducer,
       {},
       middleware,
       enhancers
     );
 
-    ngReduxRouter.initialize();
+    ngReduxRouter.initialize(); */
   }
 
 }
