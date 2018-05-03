@@ -4,6 +4,13 @@
       <li *ngFor="let link of links">
         <a mat-button routerLink="{{link.path}}" routerLinkActive="active">{{link.name}}</a>
       </li>
+      <div class="spacer" aria-hidden="true"></div>
+      <li>
+        <a mat-button routerLink="login" routerLinkActive="active">Login</a>
+      </li>
+      <li>
+        <a mat-button routerLink="register" routerLinkActive="active">Register</a>
+      </li>
     </ul>
   </nav>
 </header>
