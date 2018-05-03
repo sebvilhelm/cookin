@@ -1,5 +1,9 @@
 <header>
   <nav>
-    <a mat-button routerLink="" routerLinkActive="active">Home</a>
+    <ul>
+      <li *ngFor="let link of links">
+        <a mat-button routerLink="{{link.path}}" routerLinkActive="active">{{link.name}}</a>
+      </li>
+    </ul>
   </nav>
 </header>
