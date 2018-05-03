@@ -1,7 +1,7 @@
 export class Person {
   name: string;
-  age: number;
+  email: string;
+  dateOfBirth: Date;
   area: string;
-  specifities?: string[];
-  image: string;
+  requirement?: string[];
 }

@@ -1,0 +1,28 @@
+<form [formGroup]="registerForm" (submit)="onSubmit(registerForm)">
+  <!-- Name -->
+  <mat-form-field>
+    <input matInput placeholder="Full name" formControlName="name" name="name">
+    <mat-error class="error-message" *ngIf="registerForm.controls.name.errors?.required && registerForm.controls.name.touched">Please enter your name</mat-error>
+  </mat-form-field>
+  <!-- Email -->
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" name="email">
+    <mat-error class="error-message" *ngIf="registerForm.controls.email.errors?.email && registerForm.controls.email.touched">Please enter your email</mat-error>
+  </mat-form-field>
+  <!-- Date of birth -->
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <!-- Area -->
+  <mat-form-field>
+    <input matInput placeholder="Area" formControlName="area" name="are">
+    <mat-error class="error-message" *ngIf="registerForm.controls.area.errors?.required && registerForm.controls.area.touched">Please enter your area</mat-error>
+  </mat-form-field>
+  <!-- Requirements -->
+
+  <div>
+    <button type="submit" mat-button>Register</button>
+  </div>
+</form>

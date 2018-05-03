@@ -11,6 +11,7 @@ import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store'
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IAppState, rootReducer } from './redux/store';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 
 @NgModule({
@@ -27,11 +29,13 @@ import { RegisterComponent } from './pages/register/register.component';
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     MaterialModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
