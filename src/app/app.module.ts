@@ -14,8 +14,8 @@ import { createLogger } from 'redux-logger';
 import { IAppState, rootReducer } from './redux/store';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 @NgModule({
