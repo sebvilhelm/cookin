@@ -1,5 +1,7 @@
 export class Person {
   name: string;
+  age: number;
   area: string;
-  allergies?: string[];
+  specifities?: string[];
+  image: string;
 }
