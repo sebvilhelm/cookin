@@ -12,7 +12,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { IAppState, rootReducer } from './redux/store';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './modules/material.module';
 
 
 @NgModule({
