@@ -4,10 +4,6 @@ import { MatButtonModule, MatInputModule, MatDatepickerModule, MatIconModule, Ma
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatChipsModule } from '@angular/material/chips';
 
-// https://github.com/Gbuomprisco/ngx-chips
-import { TagInputModule } from 'ngx-chips';
-import { ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -15,8 +11,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    TagInputModule,
-    ReactiveFormsModule,
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
@@ -27,8 +21,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    TagInputModule,
-    ReactiveFormsModule,
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,

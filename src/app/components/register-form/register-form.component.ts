@@ -28,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(form) {
     if (form.valid) {
-      console.log(form);
+      console.log(form.value);
     } else {
       alert('invalid form');
     }
@@ -40,7 +40,7 @@ export class RegisterFormComponent implements OnInit {
       email: ['navn@example.com', Validators.email],
       dateOfBirth: [new Date(1992, 5, 19), Validators.required],
       area: ['Copenhagen', Validators.required],
-      specialNeeds: [['apple', 'melon']]
+      specialNeeds: [[]]
     });
   }
 
