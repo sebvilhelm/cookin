@@ -21,7 +21,8 @@
     <mat-error class="error-message" *ngIf="registerForm.controls.area.errors?.required && registerForm.controls.area.touched">Please enter your area</mat-error>
   </mat-form-field>
   <!-- Special needs -->
-  <tag-input [theme]="'my-theme'" secondaryPlaceholder="Special needs?" placeholder="Add a need" formControlName="specialNeeds"></tag-input>
+  <app-tag-input formControlName="specialNeeds" placeholder="Special needs?"></app-tag-input>
+
   <div>
     <button type=" submit " mat-button>Register</button>
   </div>

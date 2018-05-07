@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { TagInputComponent } from './components/register-form/tag-input/tag-input.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    TagInputComponent
   ],
   imports: [
     BrowserModule,
