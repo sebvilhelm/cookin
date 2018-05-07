@@ -28,6 +28,7 @@
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
     "moment": "^2.22.1",
+    "ngx-chips": "^1.8.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.18.0",
