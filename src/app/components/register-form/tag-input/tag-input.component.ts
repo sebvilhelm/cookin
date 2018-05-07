@@ -3,7 +3,7 @@
 * Autocomplete: https://github.com/angular/material2/tree/master/src/material-examples/chips-autocomplete
 */
 
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +17,10 @@ import { FormControl } from '@angular/forms';
 })
 export class TagInputComponent implements OnInit {
   @Input() placeholder: string;
+  @Input() tags: string[];
+  @Output() addTag: EventEmitter<any> = new EventEmitter<any>();
+  @Output() removeTag: EventEmitter<any> = new EventEmitter<any>();
+
   @ViewChild('tagInput') tagInput: ElementRef;
 
   filteredTags: Observable<any[]>;
@@ -28,8 +32,6 @@ export class TagInputComponent implements OnInit {
   addOnBlur: boolean = true;
 
   separatorKeysCodes = [ENTER, COMMA];
-
-  tags: string[] = [];
 
   autocompleteTags: string[] = [
     'Vegan',
@@ -53,7 +55,7 @@ export class TagInputComponent implements OnInit {
 
     // Add our tag
     if ((value || '').trim()) {
-      this.tags.push(value.trim());
+      this.addTag.emit(value.trim());
     }
 
     // Reset the input value
@@ -62,21 +64,17 @@ export class TagInputComponent implements OnInit {
     }
   }
 
-  remove(fruit: any): void {
-    const index = this.tags.indexOf(fruit);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
+  remove(tag: any): void {
+    this.removeTag.emit(tag);
   }
 
   filter(name: string) {
-    return this.autocompleteTags.filter(fruit =>
-      fruit.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return this.autocompleteTags.filter(tag =>
+      tag.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
+    this.addTag.emit(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
   }
 

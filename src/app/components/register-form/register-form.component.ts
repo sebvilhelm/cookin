@@ -4,6 +4,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/debounceTime';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
   selector: 'app-register-form',
@@ -32,8 +33,23 @@ export class RegisterFormComponent implements OnInit {
       email: ['navn@example.com', Validators.email],
       dateOfBirth: [new Date(1992, 5, 19), Validators.required],
       area: ['Copenhagen', Validators.required],
-      specialNeeds: []
+      specialNeeds: [['apple', 'melon']]
     });
+  }
+
+  addNeed(tag: string) {
+    const needs = this.registerForm.value.specialNeeds;
+    const newNeeds = [...needs, tag];
+    this.registerForm.controls.specialNeeds.setValue(newNeeds);
+  }
+
+  removeNeed(tag: string) {
+    const needs = this.registerForm.value.specialNeeds;
+    const index = needs.indexOf(tag);
+    if (index < 0) { return; }
+
+    const newNeeds = [...needs.slice(0, index), ...needs.slice(index + 1)];
+    this.registerForm.controls.specialNeeds.setValue(newNeeds);
   }
 
 }
