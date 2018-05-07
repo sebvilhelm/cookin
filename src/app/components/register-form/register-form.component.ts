@@ -14,6 +14,13 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 export class RegisterFormComponent implements OnInit {
 
   registerForm: FormGroup;
+  autocompleteTags: string[] = [
+    'Vegan',
+    'Vegetarian',
+    'Nut Allergy',
+    'Gluten Allergy',
+    'Lactose Intolerant',
+  ];
 
   constructor(
     private fb: FormBuilder

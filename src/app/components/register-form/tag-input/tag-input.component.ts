@@ -18,6 +18,7 @@ import { FormControl } from '@angular/forms';
 export class TagInputComponent implements OnInit {
   @Input() placeholder: string;
   @Input() tags: string[];
+  @Input() autocompleteTags: string[];
   @Output() addTag: EventEmitter<any> = new EventEmitter<any>();
   @Output() removeTag: EventEmitter<any> = new EventEmitter<any>();
 
@@ -33,14 +34,6 @@ export class TagInputComponent implements OnInit {
   maxSuggestions: number = 4;
 
   separatorKeysCodes = [ENTER, COMMA];
-
-  autocompleteTags: string[] = [
-    'Vegan',
-    'Vegetarian',
-    'Nut Allergy',
-    'Gluten Allergy',
-    'Lactose Intolerant',
-  ];
 
   constructor() {
     this.tagCtrl = new FormControl();

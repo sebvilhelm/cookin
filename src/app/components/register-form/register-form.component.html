@@ -21,10 +21,8 @@
     <mat-error class="error-message" *ngIf="registerForm.controls.area.errors?.required && registerForm.controls.area.touched">Please enter your area</mat-error>
   </mat-form-field>
   <!-- Special needs -->
-  <app-tag-input [tags]="registerForm.controls.specialNeeds.value" (removeTag)="removeNeed($event)" (addTag)="addNeed($event)"
-    placeholder="Special needs?"></app-tag-input>
-
-  <p>{{registerForm.controls.specialNeeds.value | json}}</p>
+  <app-tag-input [tags]="registerForm.controls.specialNeeds.value" [autocompleteTags]="autocompleteTags" (removeTag)="removeNeed($event)"
+    (addTag)="addNeed($event)" placeholder="Special needs?"></app-tag-input>
 
   <div>
     <button type=" submit " mat-button>Register</button>
