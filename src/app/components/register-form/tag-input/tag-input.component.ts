@@ -30,6 +30,7 @@ export class TagInputComponent implements OnInit {
   selectable: boolean = true;
   removable: boolean = true;
   addOnBlur: boolean = true;
+  maxSuggestions: number = 4;
 
   separatorKeysCodes = [ENTER, COMMA];
 
@@ -37,6 +38,8 @@ export class TagInputComponent implements OnInit {
     'Vegan',
     'Vegetarian',
     'Nut Allergy',
+    'Gluten Allergy',
+    'Lactose Intolerant',
   ];
 
   constructor() {
@@ -46,7 +49,7 @@ export class TagInputComponent implements OnInit {
   ngOnInit() {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
-      map((tag: string | null) => tag ? this.filter(tag) : this.autocompleteTags.slice()));
+      map((tag: string | null) => tag ? this.filter(tag) : []));
   }
 
   add(event: MatChipInputEvent): void {
@@ -69,14 +72,14 @@ export class TagInputComponent implements OnInit {
   }
 
   filter(name: string) {
-    return this.autocompleteTags.filter(tag =>
-      tag.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    // return this.autocompleteTags.filter(tag =>
+    //   tag.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return this.autocompleteTags.filter(tag => tag.toLowerCase().includes(name.toLowerCase())).slice(0, this.maxSuggestions);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.addTag.emit(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
   }
-
 
 }
