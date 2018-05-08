@@ -1,3 +1,43 @@
-<p>
-  dinner-form works!
-</p>
+<form [formGroup]="dinnerForm" (submit)="onSubmit(dinnerForm)">
+  <mat-form-field>
+    <input placeholder="name (optional)" matInput type="text" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="Street Address" matInput type="text" formControlName="streetAddress">
+    <!-- Validation error -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="City" matInput type="text" formControlName="city">
+    <!-- Validation error -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="Maximum Attendees" matInput type="number" formControlName="attendeesMax">
+    <!-- Validation error -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input placeholder="Menu" matInput type="text" formControlName="menu">
+    <!-- Validation error -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea placeholder="Description" matInput formControlName="description"></textarea>
+    <!-- Validation error -->
+  </mat-form-field>
+
+  <app-tag-input [tags]="dinnerForm.controls.specifics.value" [autocompleteTags]="autocompleteTags" (removeTag)="removeSpecificity($event)"
+    (addTag)="addSpecificity($event)" placeholder="Specifics?"></app-tag-input>
+
+  <div>
+    <button mat-button type="submit">Make dinner</button>
+  </div>
+</form>
