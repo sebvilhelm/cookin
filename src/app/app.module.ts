@@ -12,7 +12,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IAppState, rootReducer } from './redux/store';
+import { IAppState, rootReducer } from './store/store';
 import { MaterialModule } from './modules/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -22,6 +22,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { TagInputComponent } from './components/register-form/tag-input/tag-input.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { UsersService } from './users/users.service';
 
 
 @NgModule({
@@ -59,14 +60,21 @@ export class AppModule {
     const enhancers = [devTool.enhancer()];
     const middleware = [];
 
-    /* this.ngRedux.configureStore(
+    const initialState = {
+      users: {
+        currentUser: undefined,
+        users: []
+      }
+    };
+
+    this.ngRedux.configureStore(
       rootReducer,
-      {},
+      initialState,
       middleware,
       enhancers
     );
 
-    ngReduxRouter.initialize(); */
+    ngReduxRouter.initialize();
   }
 
 }
