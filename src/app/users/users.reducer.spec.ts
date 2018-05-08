@@ -48,4 +48,24 @@ describe('Users reducer', () => {
       payload: user
     })).toEqual(stateAfter);
   });
+
+  it('should unset current user on logout', () => {
+    const initialState = UsersService.getInitalState();
+    const user: Person = {
+      name: 'John Appleseed',
+      email: 'john@example.com',
+      dateOfBirth: new Date(1977, 0, 1),
+      area: 'Copenhagen',
+      requirements: ['Vegetarian']
+    };
+    initialState.currentUser = user;
+    deepFreeze(initialState);
+    const stateAfter = UsersService.getInitalState();
+    deepFreeze(stateAfter);
+
+    expect(usersReducer(initialState, {
+      type: types.UsersActions.LOGOUT_USER,
+      payload: user
+    })).toEqual(stateAfter);
+  });
 });

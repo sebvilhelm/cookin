@@ -9,6 +9,7 @@ export class UsersActions {
 
   static readonly ADD_USER = 'ADD_USER';
   static readonly LOGIN_USER = 'LOGIN_USER';
+  static readonly LOGOUT_USER = 'LOGOUT_USER';
 
 
   addUser(user: Person): void {
@@ -18,10 +19,16 @@ export class UsersActions {
     });
   }
 
-  loginUser(user: Person): void {
+  logInUser(user: Person): void {
     this.ngRedux.dispatch({
       type: UsersActions.LOGIN_USER,
       payload: user
+    });
+  }
+
+  logOutUser(user: Person): void {
+    this.ngRedux.dispatch({
+      type: UsersActions.LOGOUT_USER
     });
   }
 }

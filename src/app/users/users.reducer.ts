@@ -12,6 +12,8 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
       return tassign(state, { users: [...state.users, action.payload] });
     case UsersActions.LOGIN_USER:
       return tassign(state, { currentUser: action.payload });
+    case UsersActions.LOGOUT_USER:
+      return tassign(state, { currentUser: undefined });
     default:
       return state;
   }

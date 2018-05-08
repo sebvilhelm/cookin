@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
       requirements: ['Vegetarian']
     };
 
-    this.usersActions.loginUser(fakeUser);
+    this.usersActions.logInUser(fakeUser);
   }
 
 }
