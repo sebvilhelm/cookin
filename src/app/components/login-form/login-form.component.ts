@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Person } from '../../entities/Person';
+import { UsersActions } from '../../users/users.actions';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -10,7 +13,7 @@ export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private usersActions: UsersActions) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -22,6 +25,16 @@ export class LoginFormComponent implements OnInit {
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
     console.log('log you in', form.value);
+
+    const fakeUser: Person = {
+      name: 'John Appleseed',
+      email: 'john@example.com',
+      dateOfBirth: new Date(1977, 0, 1),
+      area: 'Copenhagen',
+      requirements: ['Vegetarian']
+    };
+
+    this.usersActions.loginUser(fakeUser);
   }
 
 }
