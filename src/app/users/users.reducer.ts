@@ -1,7 +1,8 @@
 import { tassign } from 'tassign';
-import { UsersState } from './users.store';
+
 import { UsersService } from './users.service';
 import { UsersActions } from './users.actions';
+import { UsersState } from './users.store';
 
 const INITIAL_STATE: UsersState = UsersService.getInitalState();
 

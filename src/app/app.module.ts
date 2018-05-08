@@ -23,7 +23,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { TagInputComponent } from './components/register-form/tag-input/tag-input.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { UsersService } from './users/users.service';
-
+import { UsersActions } from './users/users.actions';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,10 @@ import { UsersService } from './users/users.service';
     NgReduxRouterModule.forRoot(),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    UsersActions,
+    UsersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
