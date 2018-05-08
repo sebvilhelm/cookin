@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
+import { UsersActions } from '../../users/users.actions';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>, private usersActions: UsersActions) { }
 
   ngOnInit() {
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
@@ -29,8 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    // TODO: Redux
-    console.log('log out');
+    this.usersActions.logOutUser();
   }
 
 }

@@ -26,7 +26,7 @@ export class UsersActions {
     });
   }
 
-  logOutUser(user: Person): void {
+  logOutUser(): void {
     this.ngRedux.dispatch({
       type: UsersActions.LOGOUT_USER
     });
