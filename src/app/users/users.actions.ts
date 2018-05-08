@@ -17,4 +17,11 @@ export class UsersActions {
       payload: user
     });
   }
+
+  loginUser(user: Person): void {
+    this.ngRedux.dispatch({
+      type: UsersActions.LOGIN_USER,
+      payload: user
+    });
+  }
 }
