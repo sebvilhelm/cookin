@@ -5,11 +5,14 @@
         <a mat-button routerLink="{{link.path}}" routerLinkActive="active">{{link.name}}</a>
       </li>
       <div class="spacer" aria-hidden="true"></div>
-      <li>
+      <li *ngIf="!isLoggedIn">
         <a mat-button routerLink="login" routerLinkActive="active">Login</a>
       </li>
-      <li>
+      <li *ngIf="!isLoggedIn">
         <a mat-button routerLink="register" routerLinkActive="active">Register</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a mat-button (click)="logOut()" routerLinkActive="active">logout</a>
       </li>
     </ul>
   </nav>

@@ -24,7 +24,6 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
-    console.log('log you in', form.value);
 
     const fakeUser: Person = {
       name: 'John Appleseed',
