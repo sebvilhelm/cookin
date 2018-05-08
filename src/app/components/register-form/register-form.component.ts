@@ -40,12 +40,13 @@ export class RegisterFormComponent implements OnInit {
       email: ['navn@example.com', Validators.email],
       dateOfBirth: [new Date(1992, 5, 19), Validators.required],
       area: ['Copenhagen', Validators.required],
-      specialNeeds: [[]]
+      specialNeeds: [['Vegan', 'Gluten Allergy']] // Validation?!!?
     });
   }
 
   addNeed(tag: string) {
     const needs = this.registerForm.value.specialNeeds;
+
     const newNeeds = [...needs, tag];
     this.registerForm.controls.specialNeeds.setValue(newNeeds);
   }

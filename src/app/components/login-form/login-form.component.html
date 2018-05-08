@@ -1,3 +1,14 @@
-<p>
-  login-form works!
-</p>
+<form [formGroup]="loginForm" (submit)="onSubmit(loginForm)">
+  <mat-form-field>
+    <input matInput placeholder="Email" formControlName="email" name="email">
+    <mat-error class="error-message" *ngIf="loginForm.controls.email.errors?.email && loginForm.controls.email.touched">Please enter your email</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" formControlName="password" name="password">
+    <mat-error class="error-message" *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">Please enter your password</mat-error>
+  </mat-form-field>
+
+  <div>
+    <button mat-button type="submit">Log me in</button>
+  </div>
+</form>
