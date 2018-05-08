@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
+import { UsersState } from '../users/users.store';
+
 
 export class IAppState {
-
+  users: UsersState;
 }
-
-export const rootState: IAppState = {};
 
 export const rootReducer = combineReducers<IAppState>({
 });
