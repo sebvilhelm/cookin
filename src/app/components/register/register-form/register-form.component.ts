@@ -5,8 +5,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/debounceTime';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import { UsersActions } from '../../users/users.actions';
-import { Person } from '../../entities/Person';
+import { UsersActions } from '../../../users/users.actions';
+import { Person } from '../../../entities/Person';
 
 @Component({
   selector: 'app-register-form',

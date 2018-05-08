@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Person } from '../../entities/Person';
-import { UsersActions } from '../../users/users.actions';
+import { Person } from '../../../entities/Person';
+import { UsersActions } from '../../../users/users.actions';
 
 @Component({
   selector: 'app-login-form',

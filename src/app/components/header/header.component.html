@@ -12,7 +12,10 @@
         <a mat-button routerLink="register" routerLinkActive="active">Register</a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a mat-button (click)="logOut()" routerLinkActive="active">logout</a>
+        <a mat-button routerLink="add-dinner" routerLinkActive="active">Make a dinner</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a mat-button (click)="logOut()">logout</a>
       </li>
     </ul>
   </nav>
