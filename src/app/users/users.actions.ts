@@ -8,6 +8,7 @@ export class UsersActions {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   static readonly ADD_USER = 'ADD_USER';
+  static readonly LOGIN_USER = 'LOGIN_USER';
 
 
   addUser(user: Person): void {

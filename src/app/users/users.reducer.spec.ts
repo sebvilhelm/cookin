@@ -5,11 +5,11 @@ import * as types from './users.actions';
 const deepFreeze = require('deep-freeze');
 
 describe('Users reducer', () => {
-  it('Should return initial state', () => {
+  it('should return initial state', () => {
     expect(usersReducer(undefined, {})).toEqual(UsersService.getInitalState());
   });
 
-  it('Should add a user', () => {
+  it('should add a user', () => {
     const initialState = UsersService.getInitalState();
     deepFreeze(initialState);
     const newUser: Person = {
@@ -26,6 +26,26 @@ describe('Users reducer', () => {
     expect(usersReducer(initialState, {
       type: types.UsersActions.ADD_USER,
       payload: newUser
+    })).toEqual(stateAfter);
+  });
+
+  it('should set current user on login', () => {
+    const initialState = UsersService.getInitalState();
+    deepFreeze(initialState);
+    const user: Person = {
+      name: 'John Appleseed',
+      email: 'john@example.com',
+      dateOfBirth: new Date(1977, 0, 1),
+      area: 'Copenhagen',
+      requirements: ['Vegetarian']
+    };
+    const stateAfter = UsersService.getInitalState();
+    stateAfter.currentUser = user;
+    deepFreeze(stateAfter);
+
+    expect(usersReducer(initialState, {
+      type: types.UsersActions.LOGIN_USER,
+      payload: user
     })).toEqual(stateAfter);
   });
 });

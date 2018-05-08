@@ -10,6 +10,8 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
   switch (action.type) {
     case UsersActions.ADD_USER:
       return tassign(state, { users: [...state.users, action.payload] });
+    case UsersActions.LOGIN_USER:
+      return tassign(state, { currentUser: action.payload });
     default:
       return state;
   }

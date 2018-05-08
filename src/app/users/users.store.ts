@@ -1,6 +1,6 @@
 import { Person } from '../entities/Person';
 
 export class UsersState {
-  currentUser?: Person;
+  currentUser: Person | undefined;
   users: Person[];
 }
