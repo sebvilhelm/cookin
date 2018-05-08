@@ -21,6 +21,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { TagInputComponent } from './components/register-form/tag-input/tag-input.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TagInputComponent } from './components/register-form/tag-input/tag-inpu
     LoginComponent,
     RegisterComponent,
     RegisterFormComponent,
-    TagInputComponent
+    TagInputComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
