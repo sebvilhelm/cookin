@@ -3,5 +3,5 @@ export class Person {
   email: string;
   dateOfBirth: Date;
   area: string;
-  requirement?: string[];
+  requirements?: string[];
 }
