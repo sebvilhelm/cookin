@@ -28,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(form) {
     if (form.valid) {
-      console.log(form.value);
+      console.log('Submit form:', form.value);
     } else {
       alert('invalid form');
     }
