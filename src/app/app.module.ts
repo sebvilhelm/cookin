@@ -28,7 +28,6 @@ import { UsersService } from './users/users.service';
 import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
-import { DinnersComponent } from './components/dinners/dinners.component';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 
 @NgModule({
