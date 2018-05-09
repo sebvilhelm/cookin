@@ -15,8 +15,13 @@ export class DinnersService {
     };
   }
 
+  static generateId(): string {
+    return faker.random.uuid();
+  }
+
   static getMockDinner(): Dinner {
     return {
+      id: DinnersService.generateId(),
       name: faker.random.words(),
       streetAddress: faker.address.streetAddress(),
       city: faker.address.city(),
