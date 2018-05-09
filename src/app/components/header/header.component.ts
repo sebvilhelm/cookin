@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
     {
       name: 'Home',
       path: ''
+    },
+    {
+      name: 'Find dinners',
+      path: 'dinners'
     }
   ];
 

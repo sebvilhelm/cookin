@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './components/app/app.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -28,6 +28,7 @@ import { UsersService } from './users/users.service';
 import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
+import { DinnersComponent } from './components/dinners/dinners.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DinnersService } from './dinners/dinners.service';
     TagInputComponent,
     LoginFormComponent,
     DinnerFormComponent,
-    AddDinnerComponent
+    AddDinnerComponent,
+    DinnersComponent
   ],
   imports: [
     BrowserModule,
