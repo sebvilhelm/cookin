@@ -1,6 +1,5 @@
 import { usersReducer } from './users.reducer';
 import { UsersService } from './users.service';
-import { Person } from '../entities/Person';
 import * as types from './users.actions';
 const deepFreeze = require('deep-freeze');
 
@@ -12,13 +11,7 @@ describe('Users reducer', () => {
   it('should add a user', () => {
     const initialState = UsersService.getInitalState();
     deepFreeze(initialState);
-    const newUser: Person = {
-      name: 'John Appleseed',
-      email: 'john@example.com',
-      dateOfBirth: new Date(1977, 0, 1),
-      area: 'Copenhagen',
-      requirements: ['Vegetarian']
-    };
+    const newUser = UsersService.getMockUser();
     const stateAfter = UsersService.getInitalState();
     stateAfter.users.push(newUser);
     deepFreeze(stateAfter);
@@ -32,13 +25,7 @@ describe('Users reducer', () => {
   it('should set current user on login', () => {
     const initialState = UsersService.getInitalState();
     deepFreeze(initialState);
-    const user: Person = {
-      name: 'John Appleseed',
-      email: 'john@example.com',
-      dateOfBirth: new Date(1977, 0, 1),
-      area: 'Copenhagen',
-      requirements: ['Vegetarian']
-    };
+    const user = UsersService.getMockUser();
     const stateAfter = UsersService.getInitalState();
     stateAfter.currentUser = user;
     deepFreeze(stateAfter);
@@ -51,13 +38,7 @@ describe('Users reducer', () => {
 
   it('should unset current user on logout', () => {
     const initialState = UsersService.getInitalState();
-    const user: Person = {
-      name: 'John Appleseed',
-      email: 'john@example.com',
-      dateOfBirth: new Date(1977, 0, 1),
-      area: 'Copenhagen',
-      requirements: ['Vegetarian']
-    };
+    const user = UsersService.getMockUser();
     initialState.currentUser = user;
     deepFreeze(initialState);
     const stateAfter = UsersService.getInitalState();
