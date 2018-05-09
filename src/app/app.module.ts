@@ -43,7 +43,6 @@ import { DinnersListComponent } from './components/dinners-list/dinners-list.com
     LoginFormComponent,
     DinnerFormComponent,
     AddDinnerComponent,
-    DinnersComponent,
     DinnersListComponent
   ],
   imports: [
