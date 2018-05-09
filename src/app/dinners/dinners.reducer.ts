@@ -15,6 +15,10 @@ export function dinnersReducer(state: DinnersState = INITIAL_STATE, action: any)
           dinners: state.dinners.filter(dinner =>
             dinner.id !== action.payload)
         });
+    case DinnersActions.UPDATE_DINNER:
+      const updatedDinners = state.dinners.map(dinner => dinner.id === action.payload.id ? action.payload : dinner);
+      console.log(updatedDinners);
+      return tassign(state, { dinners: updatedDinners });
     default:
       return state;
   }
