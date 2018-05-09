@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Dinner } from '../../../entities/Dinner';
+import { DinnersService } from '../../../dinners/dinners.service';
+import { DinnersActions } from '../../../dinners/dinners.actions';
 
 @Component({
   selector: 'app-dinner-form',
@@ -12,7 +15,10 @@ export class DinnerFormComponent implements OnInit {
 
   autocompleteTags: string[] = [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private dinnersActions: DinnersActions
+  ) { }
 
   ngOnInit() {
     this.dinnerForm = this.fb.group({
@@ -29,7 +35,9 @@ export class DinnerFormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
-    console.log(form.value);
+    const dinner = form.value as Dinner;
+    dinner.id = DinnersService.generateId();
+    this.dinnersActions.addDinner(dinner);
   }
 
   addSpecificity(tag: string) {
