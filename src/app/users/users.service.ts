@@ -4,7 +4,6 @@ import { UsersState } from './users.store';
 
 @Injectable()
 export class UsersService {
-
   constructor() { }
 
   static getInitalState(): UsersState {

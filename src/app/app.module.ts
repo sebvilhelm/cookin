@@ -5,15 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './components/app/app.component';
-
-// Redux
-import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
-import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { createEpicMiddleware, combineEpics } from 'redux-observable';
-import { createLogger } from 'redux-logger';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IAppState, rootReducer } from './store/store';
-import { MaterialModule } from './modules/material.module';
+import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -22,10 +14,20 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterFormComponent } from './components/register/register-form/register-form.component';
 import { TagInputComponent } from './components/register/register-form/tag-input/tag-input.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
-import { UsersService } from './users/users.service';
-import { UsersActions } from './users/users.actions';
 import { DinnerFormComponent } from './components/add-dinner/dinner-form/dinner-form.component';
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
+
+// Redux
+import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { createEpicMiddleware, combineEpics } from 'redux-observable';
+import { createLogger } from 'redux-logger';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IAppState, rootReducer, INITAL_STATE } from './store/store';
+import { UsersService } from './users/users.service';
+import { UsersActions } from './users/users.actions';
+import { DinnersActions } from './dinners/dinners.actions';
+import { DinnersService } from './dinners/dinners.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { AddDinnerComponent } from './components/add-dinner/add-dinner.component
   providers: [
     UsersActions,
     UsersService,
+    DinnersActions,
+    DinnersService,
   ],
   bootstrap: [AppComponent]
 })
@@ -67,16 +71,9 @@ export class AppModule {
     const enhancers = [devTool.enhancer()];
     const middleware = [];
 
-    const initialState = {
-      users: {
-        currentUser: undefined,
-        users: []
-      }
-    };
-
     this.ngRedux.configureStore(
       rootReducer,
-      initialState,
+      INITAL_STATE,
       middleware,
       enhancers
     );
