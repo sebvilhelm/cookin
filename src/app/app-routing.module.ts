@@ -19,6 +19,7 @@ const routes: Routes = [
   {
     path: 'add-dinner',
     component: AddDinnerComponent
+    // TODO: AUTHGUARD
   },
   {
     path: 'register',
