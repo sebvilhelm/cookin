@@ -20,7 +20,7 @@ export class DinnerFormComponent implements OnInit {
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
       date: [new Date(), Validators.required],
-      attendeesMax: [0, Validators.required],
+      attendeesMax: [0, [Validators.required, Validators.min(1)]],
       menu: ['', Validators.required],
       description: [''],
       specifics: [[]]
