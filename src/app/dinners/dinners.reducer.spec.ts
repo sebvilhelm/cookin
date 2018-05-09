@@ -27,4 +27,20 @@ describe('Dinners reducer', () => {
     })).toEqual(stateAfter);
   });
 
+  it('should remove a dinner', () => {
+    const initialState = DinnersService.getInitalState();
+    const dinner = DinnersService.getMockDinner();
+    const dinnerToRemove = DinnersService.getMockDinner();
+    initialState.dinners.push(dinnerToRemove, dinner);
+    deepFreeze(initialState);
+    const stateAfter = DinnersService.getInitalState();
+    stateAfter.dinners.push(dinner);
+    deepFreeze(stateAfter);
+
+    expect(dinnersReducer(initialState, {
+      type: DinnersActions.REMOVE_DINNER,
+      payload: dinnerToRemove.id
+    })).toEqual(stateAfter);
+  });
+
 });
