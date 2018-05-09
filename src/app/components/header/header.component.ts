@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
@@ -9,7 +9,7 @@ import { UsersActions } from '../../users/users.actions';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   isLoggedIn: boolean = false;
@@ -31,6 +31,10 @@ export class HeaderComponent implements OnInit {
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
       this.isLoggedIn = user ? true : false;
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   logOut() {

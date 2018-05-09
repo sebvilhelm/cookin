@@ -5,11 +5,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
+import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'dinners',
+    component: DinnersListComponent
   },
   {
     path: 'add-dinner',

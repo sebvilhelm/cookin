@@ -1,0 +1,7 @@
+<section>
+  <button mat-button (click)="makeFakeDinners()">Make fake dinners</button>
+  <div *ngFor="let dinner of dinners">
+    {{dinner | json}}
+  </div>
+
+</section>
