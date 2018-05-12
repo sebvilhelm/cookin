@@ -30,6 +30,7 @@ import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     LoginFormComponent,
     DinnerFormComponent,
     AddDinnerComponent,
-    DinnersListComponent
+    DinnersListComponent,
+    MyDinnersComponent
   ],
   imports: [
     BrowserModule,
