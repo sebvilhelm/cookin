@@ -31,5 +31,9 @@ export class MyDinnersComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  removeDinner(id: string) {
+    this.dinnersActions.removeDinner(id);
+  }
+
 
 }

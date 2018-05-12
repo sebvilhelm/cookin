@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'dinners',
-    component: DinnersListComponent,
+    component: DinnersListComponent
+  },
+  {
+    path: 'my-dinners',
+    component: MyDinnersComponent,
     canActivate: [AuthGuardService]
   },
   {

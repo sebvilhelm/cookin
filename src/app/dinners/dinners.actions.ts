@@ -18,10 +18,10 @@ export class DinnersActions {
     });
   }
 
-  removeDinner(dinner: Dinner) {
+  removeDinner(id: string) {
     this.ngRedux.dispatch({
       type: DinnersActions.REMOVE_DINNER,
-      payload: dinner.id
+      payload: id
     });
   }
 
