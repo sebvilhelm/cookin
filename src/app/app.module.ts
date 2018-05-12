@@ -29,6 +29,7 @@ import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DinnersListComponent } from './components/dinners-list/dinners-list.com
     HttpClientModule,
   ],
   providers: [
+    AuthGuardService,
     UsersActions,
     UsersService,
     DinnersActions,

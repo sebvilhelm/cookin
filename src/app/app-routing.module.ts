@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -14,12 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'dinners',
-    component: DinnersListComponent
+    component: DinnersListComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'add-dinner',
-    component: AddDinnerComponent
-    // TODO: AUTHGUARD
+    component: AddDinnerComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'register',
