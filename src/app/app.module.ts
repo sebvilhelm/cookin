@@ -87,7 +87,8 @@ export class AppModule {
     const enhancers = [devTool.enhancer()];
 
     const rootEpic = combineEpics(
-      this.usersEpic.getUsers
+      this.usersEpic.getUsers,
+      this.usersEpic.addUser
     );
 
     const middleware = [

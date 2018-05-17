@@ -41,6 +41,10 @@ export class UsersService {
   getUsers() {
     return this.http.get('https://angular-exam-e8c4c.firebaseio.com/users.json');
   }
+
+  addUser(user) {
+    return this.http.post('https://angular-exam-e8c4c.firebaseio.com/users.json', user);
+  }
 }
 
 /*

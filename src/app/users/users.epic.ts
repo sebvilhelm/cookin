@@ -37,4 +37,22 @@ export class UsersEpic {
           }));
       }));
   }
+
+  addUser = (action$: ActionsObservable<any>) => {
+    return action$.ofType(UsersActions.REQUEST_ADD_USER)
+      .mergeMap((({ payload: user }) => {
+        return this.usersService.addUser(user)
+          .map((({ name }: any) => {
+            user.id = name;
+            return {
+              type: UsersActions.ADD_USER,
+              payload: user
+            };
+          }))
+          .catch(err => Observable.of({
+            type: UsersActions.FAILED_ADD_USER,
+            payload: err
+          }));
+      }));
+  }
 }
