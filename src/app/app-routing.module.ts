@@ -8,6 +8,7 @@ import { AddDinnerComponent } from './components/add-dinner/add-dinner.component
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
+import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
 
 // TODO: Child routes
 
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'add-dinner',
     component: AddDinnerComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'edit-dinner/:id',
+    component: EditDinnerComponent,
     canActivate: [AuthGuardService]
   },
   {

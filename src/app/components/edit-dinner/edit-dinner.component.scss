@@ -1,0 +1,11 @@
+section {
+  padding: 1rem 0.5rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+:host /deep/ mat-form-field{
+  width: 100%;
+  max-width: 40rem;
+  margin-bottom: 0.7rem;
+}
