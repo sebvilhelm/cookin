@@ -1,43 +1,48 @@
 <form [formGroup]="dinnerForm" (submit)="onSubmit(dinnerForm)">
   <mat-form-field>
-    <input placeholder="name (optional)" matInput type="text" formControlName="name">
+    <input placeholder="Dinner title (optional)" matInput type="text" formControlName="dinnerTitle">
   </mat-form-field>
 
   <mat-form-field>
     <input placeholder="Street Address" matInput type="text" formControlName="streetAddress">
     <!-- Validation error -->
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.streetAddress.errors?.required && dinnerForm.controls.streetAddress.touched">Please enter your street address</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input placeholder="City" matInput type="text" formControlName="city">
     <!-- Validation error -->
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.city.errors?.required && dinnerForm.controls.city.touched">Please enter your city</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.date.errors?.required && dinnerForm.controls.date.touched">Please pick a date</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input placeholder="Maximum Attendees" matInput type="number" min="1" value="1" formControlName="attendeesMax">
+    <input placeholder="Maximum Attendees" matInput type="number" min="1" formControlName="attendeesMax">
     <!-- Validation error -->
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.attendeesMax.errors?.min">You must allow at least 1 attendee</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input placeholder="Menu" matInput type="text" formControlName="menu">
     <!-- Validation error -->
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.menu.errors?.required && dinnerForm.controls.menu.touched">Please enter a name for the menu</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <textarea placeholder="Description" matInput formControlName="description"></textarea>
-    <!-- Validation error -->
   </mat-form-field>
 
   <app-tag-input [tags]="dinnerForm.controls.specifics.value" [autocompleteTags]="autocompleteTags" (removeTag)="removeSpecificity($event)"
-    (addTag)="addSpecificity($event)" placeholder="Specifics?"></app-tag-input>
+    (addTag)="addSpecificity($event)" placeholder="Friendly for"></app-tag-input>
 
   <div>
     <button mat-button type="submit">Make dinner</button>
   </div>
+
 </form>
