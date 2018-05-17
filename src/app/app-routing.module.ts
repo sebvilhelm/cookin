@@ -9,6 +9,8 @@ import { DinnersListComponent } from './components/dinners-list/dinners-list.com
 import { AuthGuardService } from './services/auth-guard.service';
 import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 
+// TODO: Child routes
+
 const routes: Routes = [
   {
     path: '',
