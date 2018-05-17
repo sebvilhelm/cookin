@@ -65,13 +65,14 @@ describe('Dinners reducer', () => {
 
   it('should add an attendee to a dinner', () => {
     const dinner = DinnersService.getMockDinner();
+    const dinnerTwo = DinnersService.getMockDinner();
     const initialState = DinnersService.getInitalState();
-    initialState.dinners.push(dinner);
+    initialState.dinners.push(dinner, dinnerTwo);
     deepFreeze(initialState);
     const attendee = UsersService.getMockUser();
     const dinnerAfter = { ...dinner, attendees: [...dinner.attendees, attendee] };
     const stateAfter = DinnersService.getInitalState();
-    stateAfter.dinners.push(dinnerAfter);
+    stateAfter.dinners.push(dinnerAfter, dinnerTwo);
     deepFreeze(stateAfter);
 
     expect(dinnersReducer(initialState, {

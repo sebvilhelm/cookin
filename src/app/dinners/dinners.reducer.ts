@@ -16,10 +16,20 @@ export function dinnersReducer(state: DinnersState = INITIAL_STATE, action: any)
             dinner.id !== action.payload)
         });
     case DinnersActions.UPDATE_DINNER:
-      const updatedDinners = state.dinners.map(dinner => dinner.id === action.payload.id ? action.payload : dinner);
-      return tassign(state, { dinners: updatedDinners });
+      return tassign(state, {
+        dinners: state.dinners.map(dinner =>
+          dinner.id === action.payload.id ? action.payload : dinner
+        )
+      });
     case DinnersActions.ADD_ATTENDEE_TO_DINNER:
-      return tassign(state, {});
+      return tassign(state, {
+        dinners: state.dinners.map(dinner => {
+          if (dinner.id === action.payload.dinnerId) {
+            return tassign(dinner, { attendees: [...dinner.attendees, action.payload.attendee] });
+          }
+          return dinner;
+        })
+      });
     default:
       return state;
   }

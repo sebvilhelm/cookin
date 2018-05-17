@@ -8,5 +8,5 @@ export class Event {
   host: Person;
   date: Date;
   attendeesMax: number;
-  attendees?: Person[];
+  attendees: Person[];
 }
