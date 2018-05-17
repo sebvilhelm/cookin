@@ -4,6 +4,7 @@ import { Dinner } from '../entities/Dinner';
 import { DinnersActions } from './dinners.actions';
 import { tassign } from 'tassign';
 import * as faker from 'faker';
+import { UsersService } from '../users/users.service';
 
 const deepFreeze = require('deep-freeze');
 
@@ -59,6 +60,23 @@ describe('Dinners reducer', () => {
     expect(dinnersReducer(initialState, {
       type: DinnersActions.UPDATE_DINNER,
       payload: updatedDinner
+    })).toEqual(stateAfter);
+  });
+
+  it('should add an attendee to a dinner', () => {
+    const dinner = DinnersService.getMockDinner();
+    const initialState = DinnersService.getInitalState();
+    initialState.dinners.push(dinner);
+    deepFreeze(initialState);
+    const attendee = UsersService.getMockUser();
+    const dinnerAfter = { ...dinner, attendees: [...dinner.attendees, attendee] };
+    const stateAfter = DinnersService.getInitalState();
+    stateAfter.dinners.push(dinnerAfter);
+    deepFreeze(stateAfter);
+
+    expect(dinnersReducer(initialState, {
+      type: DinnersActions.ADD_ATTENDEE_TO_DINNER,
+      payload: { dinnerId: dinner.id, attendee }
     })).toEqual(stateAfter);
   });
 

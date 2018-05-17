@@ -27,6 +27,10 @@ export class DinnersListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+  // TODO:
+  /*   addGuestToDinner() {
+  
+    } */
 
   makeFakeDinner() {
     this.dinnersActions.addDinner(DinnersService.getMockDinner());

@@ -9,7 +9,7 @@ export class FilterDinners implements PipeTransform {
     if (args && items.length > 0) {
       const filteredItems = items.filter(item =>
         item.menu.toLowerCase().includes(args.toLowerCase())
-        || item.specifics.includes(args)
+        || item.specifics.toString().toLowerCase().includes(args.toLowerCase())
       );
       return filteredItems;
     }

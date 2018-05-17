@@ -28,6 +28,7 @@ export class DinnersService {
       host: UsersService.getMockUser(),
       date: new Date(faker.date.future()),
       attendeesMax: faker.random.number(),
+      attendees: [],
       menu: faker.random.words(),
       description: faker.lorem.sentences(),
       specifics: ['Vegan', 'Lactose Intolerant']
