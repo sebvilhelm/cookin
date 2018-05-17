@@ -16,21 +16,24 @@ import { TagInputComponent } from './components/register/register-form/tag-input
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { DinnerFormComponent } from './components/add-dinner/dinner-form/dinner-form.component';
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
+import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
+import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
+
+// Filters/pipes
+import { FilterDinners } from './filters/dinners.filter';
 
 // Redux
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IAppState, rootReducer, INITAL_STATE } from './store/store';
 import { UsersService } from './users/users.service';
 import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
-import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 
 @NgModule({
   declarations: [
@@ -47,11 +50,13 @@ import { MyDinnersComponent } from './components/my-dinners/my-dinners.component
     AddDinnerComponent,
     DinnersListComponent,
     MyDinnersComponent,
+    FilterDinners,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
