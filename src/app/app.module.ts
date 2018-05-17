@@ -46,7 +46,7 @@ import { MyDinnersComponent } from './components/my-dinners/my-dinners.component
     DinnerFormComponent,
     AddDinnerComponent,
     DinnersListComponent,
-    MyDinnersComponent
+    MyDinnersComponent,
   ],
   imports: [
     BrowserModule,
