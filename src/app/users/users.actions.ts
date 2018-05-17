@@ -7,10 +7,18 @@ import { Person } from '../entities/Person';
 export class UsersActions {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
+  static readonly REQUEST_GET_USERS = 'REQUEST_GET_USERS';
+  static readonly FAILED_GET_USERS = 'FAILED_GET_USERS';
+  static readonly SET_USERS = 'SET_USERS';
   static readonly ADD_USER = 'ADD_USER';
   static readonly LOGIN_USER = 'LOGIN_USER';
   static readonly LOGOUT_USER = 'LOGOUT_USER';
 
+  getUsers(): void {
+    this.ngRedux.dispatch({
+      type: UsersActions.REQUEST_GET_USERS
+    });
+  }
 
   addUser(user: Person): void {
     this.ngRedux.dispatch({

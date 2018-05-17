@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { UsersState } from './users.store';
 import { Person } from '../entities/Person';
 import * as faker from 'faker';
@@ -6,7 +7,9 @@ import * as faker from 'faker';
 
 @Injectable()
 export class UsersService {
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   static getInitalState(): UsersState {
     return {
@@ -34,4 +37,21 @@ export class UsersService {
       'Lactose Intolerant',
     ];
   }
+
+  getUsers() {
+    return this.http.get('https://angular-exam-e8c4c.firebaseio.com/users.json');
+  }
 }
+
+/*
+FOR FIREBASE
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+      "users": {
+        ".indexOf": ["email"]
+      }
+  }
+}
+*/

@@ -18,6 +18,7 @@ import { DinnerFormComponent } from './components/add-dinner/dinner-form/dinner-
 import { AddDinnerComponent } from './components/add-dinner/add-dinner.component';
 import { DinnersListComponent } from './components/dinners-list/dinners-list.component';
 import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
+import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
 
 // Filters/pipes
 import { FilterDinners } from './filters/dinners.filter';
@@ -34,7 +35,7 @@ import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
+import { UsersEpic } from './users/users.epic';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.compon
     UsersService,
     DinnersActions,
     DinnersService,
+    UsersEpic
   ],
   bootstrap: [AppComponent]
 })
@@ -78,11 +80,19 @@ export class AppModule {
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
-    private ngReduxRouter: NgReduxRouter
+    private ngReduxRouter: NgReduxRouter,
+    private usersEpic: UsersEpic
   ) {
 
     const enhancers = [devTool.enhancer()];
-    const middleware = [];
+
+    const rootEpic = combineEpics(
+      this.usersEpic.getUsers
+    );
+
+    const middleware = [
+      createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+    ];
 
     this.ngRedux.configureStore(
       rootReducer,
