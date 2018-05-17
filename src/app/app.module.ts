@@ -34,6 +34,7 @@ import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     DinnersListComponent,
     MyDinnersComponent,
     FilterDinners,
+    EditDinnerComponent,
   ],
   imports: [
     BrowserModule,
