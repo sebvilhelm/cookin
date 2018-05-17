@@ -7,7 +7,8 @@ import 'rxjs/add/operator/debounceTime';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { UsersActions } from '../../../users/users.actions';
 import { Person } from '../../../entities/Person';
-import { DinnersService } from '../../../dinners/dinners.service';
+import { UsersService } from '../../../users/users.service';
+
 
 @Component({
   selector: 'app-register-form',
@@ -21,7 +22,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dinnersService: DinnersService,
+    private usersService: UsersService,
     private usersActions: UsersActions
   ) { }
 
@@ -35,7 +36,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.autocompleteTags = this.dinnersService.getAutocompleteItems();
+    this.autocompleteTags = this.usersService.getAutocompleteItems();
 
     this.registerForm = this.fb.group({
       name: ['Navn Navnesen', Validators.required],

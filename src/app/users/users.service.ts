@@ -24,4 +24,14 @@ export class UsersService {
       requirements: ['Nut Allergy']
     };
   }
+
+  getAutocompleteItems(): string[] {
+    return [
+      'Vegan',
+      'Vegetarian',
+      'Nut Allergy',
+      'Gluten Allergy',
+      'Lactose Intolerant',
+    ];
+  }
 }

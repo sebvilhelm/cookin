@@ -30,7 +30,7 @@ export class DinnersService {
       attendeesMax: faker.random.number(),
       menu: faker.random.words(),
       description: faker.lorem.sentences(),
-      specifics: []
+      specifics: ['Vegan', 'Lactose Intolerant']
     };
   }
 
@@ -38,9 +38,9 @@ export class DinnersService {
     return [
       'Vegan',
       'Vegetarian',
-      'Nut Allergy',
-      'Gluten Allergy',
-      'Lactose Intolerant',
+      'Nut Free',
+      'Gluten Free',
+      'Lactose Free',
     ];
   }
 
