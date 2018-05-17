@@ -12,12 +12,11 @@
         <p>{{dinner.description}}</p>
         <mat-chip-list>
           <mat-chip *ngFor="let specific of dinner.specifics">{{specific}}</mat-chip>
-
         </mat-chip-list>
+        <p *ngIf="dinner.attendees.includes(currentUser)">You are attending the dinner</p>
       </mat-card-content>
       <mat-card-actions>
-        <!-- TODO: Use the button -->
-        <button mat-button>Button</button>
+        <button *ngIf="currentUser && !dinner.attendees.includes(currentUser)" (click)="addGuestToDinner(dinner.id)" mat-button>Join dinner!</button>
         <!-- TODO: admin button -->
       </mat-card-actions>
     </mat-card>

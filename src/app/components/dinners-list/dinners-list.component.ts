@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Person } from '../../entities/Person';
 import { Dinner } from '../../entities/Dinner';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
@@ -13,7 +14,9 @@ import { DinnersService } from '../../dinners/dinners.service';
 })
 export class DinnersListComponent implements OnInit, OnDestroy {
   dinners: Dinner[];
-  subscription: Subscription;
+  currentUser: Person;
+  dinnerSubscription: Subscription;
+  userSubscription: Subscription;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -21,16 +24,22 @@ export class DinnersListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState => this.dinners = dinnersState.dinners);
+    this.dinnerSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState => this.dinners = dinnersState.dinners);
+    this.userSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.currentUser = user);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.dinnerSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
-  // TODO:
-  /*   addGuestToDinner() {
-  
-    } */
+
+  addGuestToDinner(dinnerId: string) {
+    if (!this.currentUser) {
+      return;
+    }
+
+    this.dinnersActions.addAttendeeToDinner(dinnerId, this.currentUser);
+  }
 
   makeFakeDinner() {
     this.dinnersActions.addDinner(DinnersService.getMockDinner());
