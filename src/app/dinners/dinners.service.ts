@@ -34,4 +34,14 @@ export class DinnersService {
     };
   }
 
+  getAutocompleteItems(): string[] {
+    return [
+      'Vegan',
+      'Vegetarian',
+      'Nut Allergy',
+      'Gluten Allergy',
+      'Lactose Intolerant',
+    ];
+  }
+
 }

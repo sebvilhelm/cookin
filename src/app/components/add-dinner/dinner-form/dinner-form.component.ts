@@ -23,14 +23,17 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private dinnersActions: DinnersActions,
-    private ngRedux: NgRedux<IAppState>
+    private ngRedux: NgRedux<IAppState>,
+    private dinnersService: DinnersService
   ) { }
 
   ngOnInit() {
+    this.autocompleteTags = this.dinnersService.getAutocompleteItems();
+
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.host = user);
 
     this.dinnerForm = this.fb.group({
-      name: '',
+      dinnerTitle: '',
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
       date: [new Date(), Validators.required],
