@@ -13,7 +13,9 @@ import { DinnersActions } from '../../dinners/dinners.actions';
 export class MyDinnersComponent implements OnInit, OnDestroy {
 
   dinners: Dinner[];
-  subscription: Subscription;
+  currentUserSubscription: Subscription;
+  dinnersSubscription: Subscription;
+
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -21,14 +23,17 @@ export class MyDinnersComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.subscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState =>
-      // TODO: Make dynamic
-      this.dinners = dinnersState.dinners.filter(dinner => dinner.host.email = 'seb.vilhelm@gmail.com')
-    );
+    this.currentUserSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
+      this.dinnersSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState =>
+        this.dinners = dinnersState.dinners.filter(dinner => dinner.host.email = user.email)
+      );
+    });
+
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.currentUserSubscription.unsubscribe();
+    this.dinnersSubscription.unsubscribe();
   }
 
   removeDinner(id: string) {
