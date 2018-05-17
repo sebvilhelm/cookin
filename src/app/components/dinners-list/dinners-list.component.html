@@ -1,7 +1,8 @@
 <section>
   <button mat-button (click)="makeFakeDinner()">Make fake dinner</button>
+  <input type="text" [(ngModel)]="search">
   <div class="dinner-list">
-    <mat-card *ngFor="let dinner of dinners">
+    <mat-card *ngFor="let dinner of dinners | filterDinners: search">
       <mat-card-header>
         <mat-card-title>{{dinner.host.name}}</mat-card-title>
         <mat-card-subtitle>in {{dinner.streetAddress}}, {{dinner.city}}</mat-card-subtitle>
