@@ -16,10 +16,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   links: Object[] = [
     {
-      name: 'Home',
-      path: ''
-    },
-    {
       name: 'Find dinners',
       path: 'dinners'
     }

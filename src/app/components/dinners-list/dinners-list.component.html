@@ -1,4 +1,5 @@
 <section>
+  <h1>Find dinners</h1>
   <label class="search-label">
     Search 🕵️‍♀️
     <input type="text" [(ngModel)]="search">
@@ -15,10 +16,11 @@
         <mat-chip-list>
           <mat-chip *ngFor="let specific of dinner.specifics">{{specific}}</mat-chip>
         </mat-chip-list>
-        <p *ngIf="dinner.attendees.includes(currentUser)">You are attending the dinner</p>
+        <p *ngIf="currentUser && dinner.attendees.includes(currentUser)">You are attending the dinner</p>
       </mat-card-content>
       <mat-card-actions>
         <button *ngIf="currentUser && !dinner.attendees.includes(currentUser)" (click)="addGuestToDinner(dinner.id)" mat-button>Join dinner!</button>
+        <button *ngIf="!currentUser" routerLink="/login" mat-button>Login in to join this dinner!</button>
       </mat-card-actions>
     </mat-card>
   </div>

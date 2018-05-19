@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './components/app/app.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -42,7 +41,6 @@ import { DinnersEpic } from './dinners/dinners.epic';
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
