@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsersState } from './users.store';
 import { Person } from '../entities/Person';
 import * as faker from 'faker';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -38,24 +39,15 @@ export class UsersService {
     ];
   }
 
-  getUsers() {
+  getUsers(): Observable<Object> {
     return this.http.get('https://angular-exam-e8c4c.firebaseio.com/users.json');
   }
 
-  addUser(user) {
+  addUser(user): Observable<Object> {
     return this.http.post('https://angular-exam-e8c4c.firebaseio.com/users.json', user);
   }
-}
 
-/*
-FOR FIREBASE
-{
-  "rules": {
-    ".read": true,
-    ".write": true,
-      "users": {
-        ".indexOf": ["email"]
-      }
+  getUserByEmail(email: string): Observable<Object> {
+    return this.http.get(`https://angular-exam-e8c4c.firebaseio.com/users.json?orderBy="email"&equalTo="${email}"`);
   }
 }
-*/

@@ -24,16 +24,8 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
-
-    const fakeUser: Person = {
-      name: 'John Appleseed',
-      email: 'john@example.com',
-      dateOfBirth: new Date(1977, 0, 1),
-      area: 'Copenhagen',
-      requirements: ['Vegetarian']
-    };
-
-    this.usersActions.logInUser(fakeUser);
+    const email = form.value.email;
+    this.usersActions.logInUser(email);
   }
 
 }

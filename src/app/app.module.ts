@@ -88,7 +88,8 @@ export class AppModule {
 
     const rootEpic = combineEpics(
       this.usersEpic.getUsers,
-      this.usersEpic.addUser
+      this.usersEpic.addUser,
+      this.usersEpic.loginUser
     );
 
     const middleware = [

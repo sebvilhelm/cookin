@@ -13,6 +13,8 @@ export class UsersActions {
   static readonly REQUEST_ADD_USER = 'REQUEST_ADD_USER';
   static readonly FAILED_ADD_USER = 'FAILED_ADD_USER';
   static readonly ADD_USER = 'ADD_USER';
+  static readonly REQUEST_USER_AUTH = 'REQUEST_USER_AUTH';
+  static readonly FAILED_USER_AUTH = 'FAILED_USER_AUTH';
   static readonly LOGIN_USER = 'LOGIN_USER';
   static readonly LOGOUT_USER = 'LOGOUT_USER';
 
@@ -29,10 +31,10 @@ export class UsersActions {
     });
   }
 
-  logInUser(user: Person): void {
+  logInUser(email: string): void {
     this.ngRedux.dispatch({
-      type: UsersActions.LOGIN_USER,
-      payload: user
+      type: UsersActions.REQUEST_USER_AUTH,
+      payload: email
     });
   }
 
