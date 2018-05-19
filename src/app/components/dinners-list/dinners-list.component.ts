@@ -25,8 +25,15 @@ export class DinnersListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dinnersActions.getDinners();
-    this.dinnerSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState => this.dinners = dinnersState.dinners);
-    this.userSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.currentUser = user);
+    this.userSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
+      this.currentUser = user;
+      this.dinnerSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState =>
+        this.dinners = dinnersState.dinners.filter(dinner =>
+          user ? dinner.host.id !== user.id : true
+        )
+      );
+
+    });
   }
 
   ngOnDestroy() {
