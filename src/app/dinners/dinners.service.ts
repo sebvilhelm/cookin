@@ -26,7 +26,7 @@ export class DinnersService {
   static getMockDinner(): Dinner {
     return {
       id: DinnersService.generateId(),
-      name: faker.random.words(),
+      title: faker.random.words(),
       streetAddress: faker.address.streetAddress(),
       city: faker.address.city(),
       host: UsersService.getMockUser(),
