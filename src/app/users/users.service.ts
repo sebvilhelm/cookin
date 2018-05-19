@@ -21,6 +21,7 @@ export class UsersService {
 
   static getMockUser(): Person {
     return {
+      id: faker.random.uuid(),
       name: faker.name.findName(),
       email: faker.internet.email(),
       dateOfBirth: new Date(faker.date.past()),
