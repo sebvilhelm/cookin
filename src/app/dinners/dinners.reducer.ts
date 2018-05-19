@@ -12,11 +12,7 @@ export function dinnersReducer(state: DinnersState = INITIAL_STATE, action: any)
     case DinnersActions.ADD_DINNER:
       return tassign(state, { dinners: [...state.dinners, action.payload] });
     case DinnersActions.REMOVE_DINNER:
-      return tassign(state,
-        {
-          dinners: state.dinners.filter(dinner =>
-            dinner.id !== action.payload)
-        });
+      return tassign(state, { dinners: state.dinners.filter(dinner => dinner.id !== action.payload) });
     case DinnersActions.UPDATE_DINNER:
       return tassign(state, {
         dinners: state.dinners.map(dinner =>

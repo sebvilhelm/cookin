@@ -94,6 +94,7 @@ export class AppModule {
     const rootEpic = combineEpics(
       this.usersEpic.getUsers,
       this.usersEpic.addUser,
+      this.usersEpic.removeUser,
       this.usersEpic.loginUser,
       this.dinnersEpic.getDinners,
       this.dinnersEpic.addDinner,

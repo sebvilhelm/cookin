@@ -22,9 +22,9 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.usersActions.getUsers();
 
-    this.usersSubscription = this.ngRedux.select(state => state.users).subscribe(users => {
-      this.users = users.users.filter(user => user.id !== users.currentUser.id);
-    }
+    this.usersSubscription = this.ngRedux.select(state => state.users).subscribe(users =>
+      this.users = users.users
+      // .filter(user => user.id !== users.currentUser.id)
     );
   }
 
@@ -33,7 +33,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(id: string) {
-
+    this.usersActions.removeUser(id);
   }
 
 }

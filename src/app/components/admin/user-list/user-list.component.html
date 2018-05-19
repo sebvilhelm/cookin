@@ -2,12 +2,13 @@
   <mat-card *ngFor="let user of users">
     <mat-card-content>
       <mat-card-title>{{user.name}}</mat-card-title>
+      <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
       <mat-chip-list>
         <mat-chip *ngFor="let requirement of user.requirements">{{requirement}}</mat-chip>
       </mat-chip-list>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="warn">Delete</button>
+      <button mat-button color="warn" (click)="deleteUser(user.id)">Delete</button>
     </mat-card-actions>
   </mat-card>
 </div>

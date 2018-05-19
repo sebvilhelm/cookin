@@ -13,6 +13,9 @@ export class UsersActions {
   static readonly REQUEST_ADD_USER = 'REQUEST_ADD_USER';
   static readonly FAILED_ADD_USER = 'FAILED_ADD_USER';
   static readonly ADD_USER = 'ADD_USER';
+  static readonly REQUEST_REMOVE_USER = 'REQUEST_REMOVE_USER';
+  static readonly FAILED_REMOVE_USER = 'FAILED_REMOVE_USER';
+  static readonly REMOVE_USER = 'REMOVE_USER';
   static readonly REQUEST_USER_AUTH = 'REQUEST_USER_AUTH';
   static readonly FAILED_USER_AUTH = 'FAILED_USER_AUTH';
   static readonly LOGIN_USER = 'LOGIN_USER';
@@ -28,6 +31,13 @@ export class UsersActions {
     this.ngRedux.dispatch({
       type: UsersActions.REQUEST_ADD_USER,
       payload: user
+    });
+  }
+
+  removeUser(id: string) {
+    this.ngRedux.dispatch({
+      type: UsersActions.REQUEST_REMOVE_USER,
+      payload: id
     });
   }
 

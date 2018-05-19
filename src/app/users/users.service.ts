@@ -49,6 +49,10 @@ export class UsersService {
     return this.http.post('https://angular-exam-e8c4c.firebaseio.com/users.json', user);
   }
 
+  deleteUser(id: string): Observable<Object> {
+    return this.http.delete(`https://angular-exam-e8c4c.firebaseio.com/users/${id}/.json`);
+  }
+
   getUserByEmail(email: string): Observable<Object> {
     return this.http.get(`https://angular-exam-e8c4c.firebaseio.com/users.json?orderBy="email"&equalTo="${email}"`);
   }

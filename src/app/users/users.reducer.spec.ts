@@ -49,4 +49,20 @@ describe('Users reducer', () => {
       payload: user
     })).toEqual(stateAfter);
   });
+
+  it('should remove a user', () => {
+    const initialState = UsersService.getInitalState();
+    const user = UsersService.getMockUser();
+    const userToRemove = UsersService.getMockUser();
+    initialState.users.push(userToRemove, user);
+    deepFreeze(initialState);
+    const stateAfter = UsersService.getInitalState();
+    stateAfter.users.push(user);
+    deepFreeze(stateAfter);
+
+    expect(usersReducer(initialState, {
+      type: types.UsersActions.REMOVE_USER,
+      payload: userToRemove.id
+    })).toEqual(stateAfter);
+  });
 });

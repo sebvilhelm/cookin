@@ -58,6 +58,23 @@ export class UsersEpic {
       });
   }
 
+  removeUser = (action$: ActionsObservable<any>) => {
+    return action$.ofType(UsersActions.REQUEST_REMOVE_USER)
+      .mergeMap(({ payload: id }) => {
+        return this.usersService.deleteUser(id)
+          .map((result: any) => {
+            return {
+              type: UsersActions.REMOVE_USER,
+              payload: id
+            };
+          })
+          .catch(err => Observable.of({
+            type: UsersActions.FAILED_REMOVE_USER,
+            payload: err
+          }));
+      });
+  }
+
   loginUser = (action$: ActionsObservable<any>) => {
     return action$.ofType(UsersActions.REQUEST_USER_AUTH)
       .mergeMap(({ payload: email }) => {
