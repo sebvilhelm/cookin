@@ -1,5 +1,4 @@
 <section>
-  <button mat-button (click)="makeFakeDinner()">Make fake dinner</button>
   <input type="text" [(ngModel)]="search">
   <div class="dinner-list">
     <mat-card *ngFor="let dinner of dinners | filterDinners: search">
@@ -17,7 +16,6 @@
       </mat-card-content>
       <mat-card-actions>
         <button *ngIf="currentUser && !dinner.attendees.includes(currentUser)" (click)="addGuestToDinner(dinner.id)" mat-button>Join dinner!</button>
-        <!-- TODO: admin button -->
       </mat-card-actions>
     </mat-card>
   </div>

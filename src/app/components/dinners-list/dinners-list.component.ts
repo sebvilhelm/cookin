@@ -38,12 +38,6 @@ export class DinnersListComponent implements OnInit, OnDestroy {
     if (!this.currentUser) {
       return;
     }
-
     this.dinnersActions.addAttendeeToDinner(dinnerId, this.currentUser);
   }
-
-  makeFakeDinner() {
-    this.dinnersActions.addDinner(DinnersService.getMockDinner());
-  }
-
 }
