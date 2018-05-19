@@ -30,6 +30,8 @@ export class EditDinnerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.autocompleteTags = this.dinnersService.getAutocompleteItems();
+
     this.dinnerSubscription = this.ngRedux.select(state => state.dinners.dinners)
       .subscribe(dinners =>
         this.dinner = dinners.find(dinner => dinner.id = this.route.snapshot.params.id));
@@ -53,7 +55,6 @@ export class EditDinnerComponent implements OnInit, OnDestroy {
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
     const dinner = tassign(this.dinner, form.value);
-    console.log(dinner);
     this.dinnersActions.updateDinner(dinner as Dinner);
   }
 
