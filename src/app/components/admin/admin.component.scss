@@ -1,0 +1,14 @@
+section {
+  padding: 1rem 0.5rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+h1 {
+  grid-column: 2;
+}
+
+.side-nav {
+  grid-column: 1;
+  grid-row: 2;
+}

@@ -9,7 +9,6 @@ import {
   MatCardModule,
   MatMenuModule,
   MatSlideToggleModule,
-  MatSidenavModule,
   MatListModule,
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -27,6 +26,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
+    MatListModule,
   ],
   exports: [
     MatButtonModule,
@@ -39,6 +39,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatMenuModule,
     MatSlideToggleModule,
+    MatListModule,
   ],
   declarations: []
 })

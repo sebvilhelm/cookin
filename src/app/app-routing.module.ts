@@ -9,8 +9,6 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
 
-// TODO: Child routes
-
 const routes: Routes = [
   {
     path: '',

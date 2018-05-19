@@ -1,2 +1,16 @@
-<router-outlet>
-  </router-outlet
+<section>
+  <h1>Admin</h1>
+
+  <mat-list role="list" class="side-nav">
+    <mat-list-item role="listitem">
+      <button mat-button routerLink="users">Users</button>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+      <button mat-button routerLink="dinners">Dinners</button>
+    </mat-list-item>
+  </mat-list>
+
+  <article>
+    <router-outlet></router-outlet>
+  </article>
+</section>

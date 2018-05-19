@@ -12,6 +12,9 @@
         <a mat-button routerLink="register" routerLinkActive="active">Register</a>
       </li>
       <li *ngIf="isLoggedIn">
+        <a mat-button routerLink="admin">Admin</a>
+      </li>
+      <li *ngIf="isLoggedIn">
         <button mat-button [matMenuTriggerFor]="menu">Profile</button>
         <mat-menu #menu="matMenu">
           <a mat-menu-item routerLink="my-dinners" routerLinkActive="active">My Dinners</a>

@@ -42,25 +42,25 @@ export class RegisterFormComponent implements OnInit {
       email: ['', Validators.email],
       dateOfBirth: ['', Validators.required],
       area: ['', Validators.required],
-      specialNeeds: [[]], // Validation?!!?
+      requirements: [[]], // Validation?!!?
       isAdmin: [false]
     });
   }
 
   addNeed(tag: string) {
-    const needs = this.registerForm.value.specialNeeds;
+    const needs = this.registerForm.value.requirements;
 
     const newNeeds = [...needs, tag];
-    this.registerForm.controls.specialNeeds.setValue(newNeeds);
+    this.registerForm.controls.requirements.setValue(newNeeds);
   }
 
   removeNeed(tag: string) {
-    const needs = this.registerForm.value.specialNeeds;
+    const needs = this.registerForm.value.requirements;
     const index = needs.indexOf(tag);
     if (index < 0) { return; }
 
     const newNeeds = [...needs.slice(0, index), ...needs.slice(index + 1)];
-    this.registerForm.controls.specialNeeds.setValue(newNeeds);
+    this.registerForm.controls.requirements.setValue(newNeeds);
   }
 
 }
