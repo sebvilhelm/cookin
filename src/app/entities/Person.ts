@@ -5,4 +5,5 @@ export class Person {
   dateOfBirth: Date;
   area: string;
   requirements: string[];
+  isAdmin: boolean;
 }

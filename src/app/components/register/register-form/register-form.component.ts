@@ -42,7 +42,8 @@ export class RegisterFormComponent implements OnInit {
       email: ['', Validators.email],
       dateOfBirth: ['', Validators.required],
       area: ['', Validators.required],
-      specialNeeds: [[]] // Validation?!!?
+      specialNeeds: [[]], // Validation?!!?
+      isAdmin: [false]
     });
   }
 

@@ -26,7 +26,8 @@ export class UsersService {
       email: faker.internet.email(),
       dateOfBirth: new Date(faker.date.past()),
       area: faker.address.city(),
-      requirements: ['Nut Allergy']
+      requirements: ['Nut Allergy'],
+      isAdmin: false
     };
   }
 

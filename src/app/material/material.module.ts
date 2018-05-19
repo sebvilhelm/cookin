@@ -8,6 +8,7 @@ import {
   MatAutocompleteModule,
   MatCardModule,
   MatMenuModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatChipsModule } from '@angular/material/chips';
@@ -24,6 +25,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatAutocompleteModule,
     MatCardModule,
     MatMenuModule,
+    MatSlideToggleModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -36,6 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatAutocompleteModule,
     MatCardModule,
     MatMenuModule,
+    MatSlideToggleModule,
   ],
   declarations: []
 })
