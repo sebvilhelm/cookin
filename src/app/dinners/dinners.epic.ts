@@ -15,18 +15,13 @@ export class DinnersEpic {
     private dinnersService: DinnersService
   ) { }
 
-  // TODO: UpdateDinner
-  // TODO: DeleteDinner
-
-
-
   getDinners = (action$: ActionsObservable<any>) => {
     return action$.ofType(DinnersActions.REQUEST_GET_DINNERS)
       .mergeMap(({ payload }) => {
         return this.dinnersService.getDinners()
           .map((response: Object) => {
             const dinners = Object.keys(response).reduce((array, key) => {
-              const dinner = { attendees: [], ...response[key], id: key };
+              const dinner = { attendees: [], specifics: [], ...response[key], id: key } as Dinner;
               array.push(dinner);
               return array;
             }, []);
@@ -60,4 +55,22 @@ export class DinnersEpic {
       });
   }
 
+  updateDinner = (action$: ActionsObservable<any>) => {
+    return action$.ofType(DinnersActions.REQUEST_UPDATE_DINNER)
+      .mergeMap(({ payload: dinner }) => {
+        return this.dinnersService.updateDinner(dinner)
+          .map((result: any) => {
+            return {
+              type: DinnersActions.UPDATE_DINNER,
+              payload: dinner
+            };
+          })
+          .catch(err => Observable.of({
+            type: DinnersActions.FAILED_UPDATE_DINNER,
+            payload: err
+          }));
+      });
+  }
+
+  // TODO: DeleteDinner
 }

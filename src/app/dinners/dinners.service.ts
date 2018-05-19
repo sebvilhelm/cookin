@@ -58,4 +58,9 @@ export class DinnersService {
     return this.http.post('https://angular-exam-e8c4c.firebaseio.com/dinners.json', dinner);
   }
 
+  updateDinner(dinner: Dinner) {
+    const { id, ...updatedDinner } = dinner;
+    return this.http.patch(`https://angular-exam-e8c4c.firebaseio.com/dinners/${id}/.json`, updatedDinner);
+  }
+
 }

@@ -52,7 +52,6 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
     if (!form.valid) { return; }
     const dinner = form.value as Dinner;
     dinner.host = this.host;
-    dinner.id = DinnersService.generateId();
     this.dinnersActions.addDinner(dinner);
   }
 

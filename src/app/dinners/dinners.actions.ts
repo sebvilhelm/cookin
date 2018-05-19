@@ -13,6 +13,8 @@ export class DinnersActions {
   static readonly ADD_DINNER = 'ADD_DINNER';
   static readonly ADD_ATTENDEE_TO_DINNER = 'ADD_ATTENDEE_TO_DINNER';
   static readonly REMOVE_DINNER = 'REMOVE_DINNER';
+  static readonly REQUEST_UPDATE_DINNER = 'REQUEST_UPDATE_DINNER';
+  static readonly FAILED_UPDATE_DINNER = 'FAILED_UPDATE_DINNER';
   static readonly UPDATE_DINNER = 'UPDATE_DINNER';
   static readonly REQUEST_GET_DINNERS = 'REQUEST_GET_DINNERS';
   static readonly FAILED_GET_DINNERS = 'FAILED_GET_DINNERS';
@@ -40,7 +42,7 @@ export class DinnersActions {
 
   updateDinner(dinner: Dinner) {
     this.ngRedux.dispatch({
-      type: DinnersActions.UPDATE_DINNER,
+      type: DinnersActions.REQUEST_UPDATE_DINNER,
       payload: dinner
     });
   }
