@@ -9,13 +9,14 @@ import {
   MatCardModule,
   MatMenuModule,
   MatSlideToggleModule,
+  MatSidenavModule,
+  MatListModule,
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
     MatDatepickerModule,
@@ -28,7 +29,6 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSlideToggleModule,
   ],
   exports: [
-    BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
     MatDatepickerModule,

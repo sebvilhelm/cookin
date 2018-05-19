@@ -36,6 +36,7 @@ import { DinnersService } from './dinners/dinners.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UsersEpic } from './users/users.epic';
 import { DinnersEpic } from './dinners/dinners.epic';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DinnersEpic } from './dinners/dinners.epic';
     EditDinnerComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
