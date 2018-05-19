@@ -95,7 +95,8 @@ export class AppModule {
       this.usersEpic.loginUser,
       this.dinnersEpic.getDinners,
       this.dinnersEpic.addDinner,
-      this.dinnersEpic.updateDinner
+      this.dinnersEpic.updateDinner,
+      this.dinnersEpic.deleteDinner
     );
 
     const middleware = [

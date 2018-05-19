@@ -63,4 +63,8 @@ export class DinnersService {
     return this.http.patch(`https://angular-exam-e8c4c.firebaseio.com/dinners/${id}/.json`, updatedDinner);
   }
 
+  deleteDinner(id: string) {
+    return this.http.delete(`https://angular-exam-e8c4c.firebaseio.com/dinners/${id}/.json`);
+  }
+
 }

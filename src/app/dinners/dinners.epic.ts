@@ -72,5 +72,20 @@ export class DinnersEpic {
       });
   }
 
-  // TODO: DeleteDinner
+  deleteDinner = (action$: ActionsObservable<any>) => {
+    return action$.ofType(DinnersActions.REQUEST_REMOVE_DINNER)
+      .mergeMap(({ payload: id }) => {
+        return this.dinnersService.deleteDinner(id)
+          .map((result: any) => {
+            return {
+              type: DinnersActions.REMOVE_DINNER,
+              payload: id
+            };
+          })
+          .catch(err => Observable.of({
+            type: DinnersActions.FAILED_REMOVE_DINNER,
+            payload: err
+          }));
+      });
+  }
 }
