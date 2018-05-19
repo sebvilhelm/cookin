@@ -3,11 +3,15 @@ import { DinnersState } from './dinners.store';
 import { Dinner } from '../entities/Dinner';
 import * as faker from 'faker';
 import { UsersService } from '../users/users.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DinnersService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   static getInitalState(): DinnersState {
     return {
@@ -43,6 +47,15 @@ export class DinnersService {
       'Gluten Free',
       'Lactose Free',
     ];
+  }
+
+  getDinners(): Observable<Object> {
+    return this.http.get('https://angular-exam-e8c4c.firebaseio.com/dinners.json');
+  }
+
+  addDinner(dinner: Dinner): Observable<Object> {
+    dinner.attendees = [];
+    return this.http.post('https://angular-exam-e8c4c.firebaseio.com/dinners.json', dinner);
   }
 
 }

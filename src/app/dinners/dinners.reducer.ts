@@ -7,6 +7,8 @@ const INITIAL_STATE: DinnersState = DinnersService.getInitalState();
 
 export function dinnersReducer(state: DinnersState = INITIAL_STATE, action: any) {
   switch (action.type) {
+    case DinnersActions.SET_DINNERS:
+      return tassign(state, { dinners: action.payload });
     case DinnersActions.ADD_DINNER:
       return tassign(state, { dinners: [...state.dinners, action.payload] });
     case DinnersActions.REMOVE_DINNER:

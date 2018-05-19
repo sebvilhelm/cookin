@@ -36,6 +36,7 @@ import { DinnersActions } from './dinners/dinners.actions';
 import { DinnersService } from './dinners/dinners.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UsersEpic } from './users/users.epic';
+import { DinnersEpic } from './dinners/dinners.epic';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { UsersEpic } from './users/users.epic';
     UsersService,
     DinnersActions,
     DinnersService,
-    UsersEpic
+    UsersEpic,
+    DinnersEpic
   ],
   bootstrap: [AppComponent]
 })
@@ -81,7 +83,8 @@ export class AppModule {
     private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,
-    private usersEpic: UsersEpic
+    private usersEpic: UsersEpic,
+    private dinnersEpic: DinnersEpic
   ) {
 
     const enhancers = [devTool.enhancer()];
@@ -89,7 +92,9 @@ export class AppModule {
     const rootEpic = combineEpics(
       this.usersEpic.getUsers,
       this.usersEpic.addUser,
-      this.usersEpic.loginUser
+      this.usersEpic.loginUser,
+      this.dinnersEpic.getDinners,
+      this.dinnersEpic.addDinner
     );
 
     const middleware = [

@@ -8,14 +8,25 @@ import { Person } from '../entities/Person';
 export class DinnersActions {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
+  static readonly REQUEST_ADD_DINNER = 'REQUEST_ADD_DINNER';
+  static readonly FAILED_ADD_DINNER = 'FAILED_ADD_DINNER';
   static readonly ADD_DINNER = 'ADD_DINNER';
   static readonly ADD_ATTENDEE_TO_DINNER = 'ADD_ATTENDEE_TO_DINNER';
   static readonly REMOVE_DINNER = 'REMOVE_DINNER';
   static readonly UPDATE_DINNER = 'UPDATE_DINNER';
+  static readonly REQUEST_GET_DINNERS = 'REQUEST_GET_DINNERS';
+  static readonly FAILED_GET_DINNERS = 'FAILED_GET_DINNERS';
+  static readonly SET_DINNERS = 'SET_DINNERS';
+
+  getDinners() {
+    this.ngRedux.dispatch({
+      type: DinnersActions.REQUEST_GET_DINNERS
+    });
+  }
 
   addDinner(dinner: Dinner) {
     this.ngRedux.dispatch({
-      type: DinnersActions.ADD_DINNER,
+      type: DinnersActions.REQUEST_ADD_DINNER,
       payload: dinner
     });
   }
