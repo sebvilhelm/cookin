@@ -15,6 +15,11 @@ export class DinnersEpic {
     private dinnersService: DinnersService
   ) { }
 
+  // TODO: UpdateDinner
+  // TODO: DeleteDinner
+
+
+
   getDinners = (action$: ActionsObservable<any>) => {
     return action$.ofType(DinnersActions.REQUEST_GET_DINNERS)
       .mergeMap(({ payload }) => {
