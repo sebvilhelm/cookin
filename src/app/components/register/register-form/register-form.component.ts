@@ -37,13 +37,12 @@ export class RegisterFormComponent implements OnInit {
 
   ngOnInit() {
     this.autocompleteTags = this.usersService.getAutocompleteItems();
-
     this.registerForm = this.fb.group({
-      name: ['Navn Navnesen', Validators.required],
-      email: ['navn@example.com', Validators.email],
-      dateOfBirth: [new Date(1992, 5, 19), Validators.required],
-      area: ['Copenhagen', Validators.required],
-      specialNeeds: [['Vegan', 'Gluten Allergy']] // Validation?!!?
+      name: ['', Validators.required],
+      email: ['', Validators.email],
+      dateOfBirth: ['', Validators.required],
+      area: ['', Validators.required],
+      specialNeeds: [[]] // Validation?!!?
     });
   }
 
