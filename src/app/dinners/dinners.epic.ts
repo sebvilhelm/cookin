@@ -48,7 +48,6 @@ export class DinnersEpic {
         return this.dinnersService.addDinner(dinner)
           .map(({ name: id }: any) => {
             const createdDinner = { ...dinner, id } as Dinner;
-            console.log(createdDinner);
             return {
               type: DinnersActions.ADD_DINNER,
               payload: createdDinner
