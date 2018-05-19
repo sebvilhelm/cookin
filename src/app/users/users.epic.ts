@@ -13,7 +13,8 @@ import { Person } from '../entities/Person';
 @Injectable()
 export class UsersEpic {
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ) { }
 
   getUsers = (action$: ActionsObservable<any>) => {
@@ -44,6 +45,7 @@ export class UsersEpic {
         return this.usersService.addUser(user)
           .map(({ name: id }: any) => {
             const createdUser = { ...user, id } as Person;
+            this.router.navigate(['/login']);
             return {
               type: UsersActions.ADD_USER,
               payload: createdUser
@@ -70,7 +72,7 @@ export class UsersEpic {
             if (!user) { // Throw an error if no user was returned from the server
               throw new Error('No user match');
             }
-
+            this.router.navigate(['/']);
             return {
               type: UsersActions.LOGIN_USER,
               payload: user
