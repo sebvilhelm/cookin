@@ -23,8 +23,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.usersActions.getUsers();
 
     this.usersSubscription = this.ngRedux.select(state => state.users).subscribe(users => {
-      console.log(users);
-      this.users = users.users;
+      this.users = users.users.filter(user => user.id !== users.currentUser.id);
     }
     );
   }
