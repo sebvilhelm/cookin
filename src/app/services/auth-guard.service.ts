@@ -7,6 +7,7 @@ import { IAppState } from '../store/store';
 export class AuthGuardService implements CanActivate {
 
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     private router: Router,
@@ -23,6 +24,19 @@ export class AuthGuardService implements CanActivate {
     });
     if (!this.isLoggedIn) {
       this.router.navigate(['login']);
+      return false;
+    }
+
+    return true;
+  }
+
+  checkIfAdmin() {
+    this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
+      this.isAdmin = user.isAdmin;
+    });
+
+    if (!this.isAdmin) {
+      alert('Admin only section!');
       return false;
     }
 
