@@ -23,6 +23,8 @@ export class MyDinnersComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.dinnersActions.getDinners();
+
     this.currentUserSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
       this.dinnersSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState =>
         this.dinners = dinnersState.dinners.filter(dinner => dinner.host.email = user.email)

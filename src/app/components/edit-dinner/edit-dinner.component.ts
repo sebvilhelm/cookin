@@ -35,7 +35,7 @@ export class EditDinnerComponent implements OnInit, OnDestroy {
         this.dinner = dinners.find(dinner => dinner.id = this.route.snapshot.params.id));
 
     this.editDinnerForm = this.fb.group({
-      dinnerTitle: this.dinner.name,
+      dinnerTitle: this.dinner.title,
       streetAddress: [this.dinner.streetAddress, Validators.required],
       city: [this.dinner.city, Validators.required],
       date: [new Date(this.dinner.date), Validators.required],

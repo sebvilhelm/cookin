@@ -33,7 +33,7 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.host = user);
 
     this.dinnerForm = this.fb.group({
-      dinnerTitle: '',
+      title: '',
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
       date: [new Date(), Validators.required],
