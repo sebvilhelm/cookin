@@ -8,6 +8,7 @@ import { DinnersListComponent } from './components/dinners-list/dinners-list.com
 import { AuthGuardService } from './services/auth-guard.service';
 import { MyDinnersComponent } from './components/my-dinners/my-dinners.component';
 import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
+import { AdminGuardService } from './services/admin-guard.service';
 
 const routes: Routes = [
   {
@@ -44,7 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './components/admin/admin.module#AdminModule'
+    loadChildren: './components/admin/admin.module#AdminModule',
+    canActivate: [AuthGuardService, AdminGuardService]
   },
   {
     path: '**',

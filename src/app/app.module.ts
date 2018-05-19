@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AdminGuardService } from './services/admin-guard.service';
+import { DinnersService } from './dinners/dinners.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { UsersService } from './users/users.service';
 
 import { AppComponent } from './components/app/app.component';
 import { MaterialModule } from './material/material.module';
@@ -29,14 +34,10 @@ import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IAppState, rootReducer, INITAL_STATE } from './store/store';
-import { UsersService } from './users/users.service';
 import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
-import { DinnersService } from './dinners/dinners.service';
-import { AuthGuardService } from './services/auth-guard.service';
 import { UsersEpic } from './users/users.epic';
 import { DinnersEpic } from './dinners/dinners.epic';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     AuthGuardService,
+    AdminGuardService,
     UsersActions,
     UsersService,
     DinnersActions,
