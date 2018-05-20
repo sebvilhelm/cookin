@@ -4,7 +4,7 @@ import { Dinner } from '../entities/Dinner';
 
 @Pipe({ name: 'filterDinners' })
 @Injectable()
-export class FilterDinners implements PipeTransform {
+export class DinnersFilter implements PipeTransform {
   transform(items: Dinner[], args: string) {
     if (args && items.length > 0) {
       const filteredItems = items.filter(item =>

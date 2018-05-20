@@ -25,7 +25,7 @@ import { MyDinnersComponent } from './components/my-dinners/my-dinners.component
 import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.component';
 
 // Filters/pipes
-import { FilterDinners } from './filters/dinners.filter';
+import { DinnersFilter } from './filters/dinners.filter';
 
 // Redux
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
@@ -53,7 +53,7 @@ import { DinnersEpic } from './dinners/dinners.epic';
     AddDinnerComponent,
     DinnersListComponent,
     MyDinnersComponent,
-    FilterDinners,
+    DinnersFilter,
     EditDinnerComponent,
   ],
   imports: [
