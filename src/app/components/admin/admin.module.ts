@@ -5,7 +5,7 @@ import { AdminComponent } from './admin.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { MaterialModule } from '../../material/material.module';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListComponent } from './admin-user-list/user-list.component';
 
 @NgModule({
   imports: [
