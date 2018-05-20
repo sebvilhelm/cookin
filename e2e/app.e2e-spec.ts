@@ -1,4 +1,4 @@
-import { AppPage } from './app.po';
+/* import { AppPage } from './app.po';
 import { browser } from 'protractor';
 
 describe('exam App', () => {
@@ -15,3 +15,4 @@ describe('exam App', () => {
 });
 
 
+ */
