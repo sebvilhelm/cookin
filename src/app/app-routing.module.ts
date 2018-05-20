@@ -46,7 +46,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './components/admin/admin.module#AdminModule',
-    // canActivate: [AuthGuardService, AdminGuardService] // TODO: uncomment
+    canActivate: [AuthGuardService, AdminGuardService]
   },
   {
     path: '**',
