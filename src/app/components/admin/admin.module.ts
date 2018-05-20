@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MaterialModule } from '../../material/material.module';
 import { UserListComponent } from './admin-user-list/user-list.component';
+import { AdminDinnersListComponent } from './admin-dinners-list/admin-dinners-list.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { UserListComponent } from './admin-user-list/user-list.component';
   ],
   declarations: [
     AdminComponent,
-    UserListComponent
+    UserListComponent,
+    AdminDinnersListComponent
   ],
   providers: []
 })

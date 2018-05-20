@@ -24,7 +24,7 @@
   <app-tag-input [tags]="registerForm.controls.requirements.value" [autocompleteTags]="autocompleteTags" (removeTag)="removeNeed($event)"
     (addTag)="addNeed($event)" placeholder="Special needs?"></app-tag-input>
   <!-- TODO: Add a password -->
-  <div>
+  <div class="toggle-container">
     <mat-slide-toggle formControlName="isAdmin">Are you an admin?</mat-slide-toggle>
   </div>
 

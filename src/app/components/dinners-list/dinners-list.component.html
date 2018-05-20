@@ -8,7 +8,7 @@
     <mat-card *ngFor="let dinner of dinners | filterDinners: search">
       <mat-card-header>
         <mat-card-title>{{dinner.host.name}}</mat-card-title>
-        <mat-card-subtitle>in {{dinner.streetAddress}}, {{dinner.city}}</mat-card-subtitle>
+        <mat-card-subtitle>@ {{dinner.streetAddress}}, {{dinner.city}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <mat-card-title>{{dinner.menu}}</mat-card-title>
