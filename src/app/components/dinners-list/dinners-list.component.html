@@ -2,7 +2,7 @@
   <h1>Find dinners</h1>
   <label class="search-label">
     Search 🕵️‍♀️
-    <input type="text" [(ngModel)]="search">
+    <input id="search-input" type="text" [(ngModel)]="search">
   </label>
   <div class="dinner-list">
     <mat-card *ngFor="let dinner of dinners | filterDinners: search">

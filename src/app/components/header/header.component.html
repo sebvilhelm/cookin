@@ -6,13 +6,13 @@
       </li>
       <div class="spacer" aria-hidden="true"></div>
       <li *ngIf="!isLoggedIn">
-        <a mat-button routerLink="login" routerLinkActive="active">Login</a>
+        <a id="login-link" mat-button routerLink="login" routerLinkActive="active">Login</a>
       </li>
       <li *ngIf="!isLoggedIn">
-        <a mat-button routerLink="register" routerLinkActive="active">Register</a>
+        <a id="register-link" mat-button routerLink="register" routerLinkActive="active">Register</a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a mat-button routerLink="admin">Admin</a>
+        <a id="admin-link" mat-button routerLink="admin">Admin</a>
       </li>
       <li *ngIf="isLoggedIn">
         <button mat-button [matMenuTriggerFor]="menu">Profile</button>
