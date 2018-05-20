@@ -17,6 +17,7 @@ export class DinnersListComponent implements OnInit, OnDestroy {
   currentUser: Person;
   dinnerSubscription: Subscription;
   userSubscription: Subscription;
+  search: string;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
