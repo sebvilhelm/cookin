@@ -89,7 +89,7 @@ export class AppModule {
     private dinnersEpic: DinnersEpic
   ) {
 
-    const enhancers = [devTool.enhancer()];
+    const enhancers = [devTool.isEnabled() ? devTool.enhancer() : f => f];
 
     const rootEpic = combineEpics(
       this.usersEpic.getUsers,
