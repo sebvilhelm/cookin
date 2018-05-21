@@ -86,8 +86,8 @@ export class UsersEpic {
               return array;
             }, [])[0];
 
-            if (!user) { // Throw an error if no user was returned from the server
-              throw new Error('No user match');
+            if (!user) {
+              throw new Error('No user match'); // Throw an error if no user was returned from the server
             }
             this.router.navigate(['/']);
             return {
