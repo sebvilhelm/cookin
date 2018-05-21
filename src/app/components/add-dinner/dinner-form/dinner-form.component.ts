@@ -32,6 +32,7 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
 
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.host = user);
 
+    // TODO: custom validator
     this.dinnerForm = this.fb.group({
       title: '',
       streetAddress: ['', Validators.required],
