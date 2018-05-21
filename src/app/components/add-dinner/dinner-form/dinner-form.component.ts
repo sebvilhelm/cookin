@@ -37,7 +37,7 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
       date: [new Date(), Validators.required],
-      attendeesMax: [0, [Validators.required, Validators.min(1)]],
+      attendeesMax: [0, Validators.compose([Validators.required, Validators.min(1)])],
       menu: ['', Validators.required],
       description: [''],
       specifics: [[]]
