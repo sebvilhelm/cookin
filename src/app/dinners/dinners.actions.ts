@@ -6,11 +6,13 @@ import { Person } from '../entities/Person';
 
 @Injectable()
 export class DinnersActions {
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>) {}
 
   static readonly REQUEST_ADD_DINNER = 'REQUEST_ADD_DINNER';
   static readonly FAILED_ADD_DINNER = 'FAILED_ADD_DINNER';
   static readonly ADD_DINNER = 'ADD_DINNER';
+  static readonly REQUEST_ADD_ATTENDEE_TO_DINNER = 'REQUEST_ADD_ATTENDEE_TO_DINNER';
+  static readonly FAILED_ADD_ATTENDEE_TO_DINNER = 'FAILED_ADD_ATTENDEE_TO_DINNER';
   static readonly ADD_ATTENDEE_TO_DINNER = 'ADD_ATTENDEE_TO_DINNER';
   static readonly REQUEST_REMOVE_DINNER = 'REQUEST_REMOVE_DINNER';
   static readonly FAILED_REMOVE_DINNER = 'FAILED_REMOVE_DINNER';
@@ -49,11 +51,10 @@ export class DinnersActions {
     });
   }
 
-  addAttendeeToDinner(dinnerId: string, attendee: Person) {
+  addAttendeeToDinner(dinner: Dinner, attendee: Person) {
     this.ngRedux.dispatch({
-      type: DinnersActions.ADD_ATTENDEE_TO_DINNER,
-      payload: { dinnerId, attendee }
+      type: DinnersActions.REQUEST_ADD_ATTENDEE_TO_DINNER,
+      payload: { dinner, attendee }
     });
   }
-
 }

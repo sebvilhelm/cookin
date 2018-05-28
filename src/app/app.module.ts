@@ -28,7 +28,11 @@ import { EditDinnerComponent } from './components/edit-dinner/edit-dinner.compon
 import { DinnersFilter } from './filters/dinners.filter';
 
 // Redux
-import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
+import {
+  DevToolsExtension,
+  NgRedux,
+  NgReduxModule
+} from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { createLogger } from 'redux-logger';
@@ -54,7 +58,7 @@ import { DinnersEpic } from './dinners/dinners.epic';
     DinnersListComponent,
     MyDinnersComponent,
     DinnersFilter,
-    EditDinnerComponent,
+    EditDinnerComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -65,7 +69,7 @@ import { DinnersEpic } from './dinners/dinners.epic';
     MaterialModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     AuthGuardService,
@@ -80,7 +84,6 @@ import { DinnersEpic } from './dinners/dinners.epic';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
@@ -88,7 +91,6 @@ export class AppModule {
     private usersEpic: UsersEpic,
     private dinnersEpic: DinnersEpic
   ) {
-
     const enhancers = [devTool.isEnabled() ? devTool.enhancer() : f => f];
 
     const rootEpic = combineEpics(
@@ -99,11 +101,13 @@ export class AppModule {
       this.dinnersEpic.getDinners,
       this.dinnersEpic.addDinner,
       this.dinnersEpic.updateDinner,
-      this.dinnersEpic.deleteDinner
+      this.dinnersEpic.deleteDinner,
+      this.dinnersEpic.addAttendee
     );
 
     const middleware = [
-      createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+      createEpicMiddleware(rootEpic),
+      createLogger({ level: 'info', collapsed: true })
     ];
 
     this.ngRedux.configureStore(
@@ -115,5 +119,4 @@ export class AppModule {
 
     ngReduxRouter.initialize();
   }
-
 }

@@ -22,19 +22,23 @@ export class DinnersListComponent implements OnInit, OnDestroy {
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private dinnersActions: DinnersActions
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.dinnersActions.getDinners();
-    this.userSubscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
-      this.currentUser = user;
-      this.dinnerSubscription = this.ngRedux.select(state => state.dinners).subscribe(dinnersState =>
-        this.dinners = dinnersState.dinners.filter(dinner =>
-          user ? dinner.host.id !== user.id : true
-        )
-      );
-
-    });
+    this.userSubscription = this.ngRedux
+      .select(state => state.users.currentUser)
+      .subscribe(user => {
+        this.currentUser = user;
+        this.dinnerSubscription = this.ngRedux
+          .select(state => state.dinners)
+          .subscribe(
+            dinnersState =>
+              (this.dinners = dinnersState.dinners.filter(
+                dinner => (user ? dinner.host.id !== user.id : true)
+              ))
+          );
+      });
   }
 
   ngOnDestroy() {
@@ -46,6 +50,8 @@ export class DinnersListComponent implements OnInit, OnDestroy {
     if (!this.currentUser) {
       return;
     }
-    this.dinnersActions.addAttendeeToDinner(dinnerId, this.currentUser);
+    const dinnerToAttend = this.dinners.find(dinner => dinner.id === dinnerId);
+
+    this.dinnersActions.addAttendeeToDinner(dinnerToAttend, this.currentUser);
   }
 }
