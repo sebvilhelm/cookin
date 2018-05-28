@@ -114,7 +114,7 @@ export class DinnersEpic {
       .ofType(DinnersActions.REQUEST_ADD_ATTENDEE_TO_DINNER)
       .mergeMap(({ payload: { dinner, attendee } }) => {
         const newDinner = tassign(dinner, {
-          attendees: [...dinner.attendees, attendee]
+          attendees: [...dinner.attendees, attendee.id]
         });
         return this.dinnersService
           .updateDinner(newDinner)
