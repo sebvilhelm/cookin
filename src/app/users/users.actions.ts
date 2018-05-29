@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
+import { Router } from '@angular/router';
 import { IAppState } from '../store/store';
 import { Person } from '../entities/Person';
 
 @Injectable()
 export class UsersActions {
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private router: Router
+  ) { }
 
   static readonly REQUEST_GET_USERS = 'REQUEST_GET_USERS';
   static readonly FAILED_GET_USERS = 'FAILED_GET_USERS';
@@ -49,6 +53,8 @@ export class UsersActions {
   }
 
   logOutUser(): void {
+    // * Reroute before logout, to avoid error states
+    this.router.navigate(['/']);
     this.ngRedux.dispatch({
       type: UsersActions.LOGOUT_USER
     });
