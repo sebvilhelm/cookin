@@ -7,6 +7,8 @@ import { Person } from '../../../entities/Person';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store/store';
+import { DateValidator } from '../../../validators/date.validator';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dinner-form',
@@ -32,12 +34,12 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
 
     this.subscription = this.ngRedux.select(state => state.users.currentUser).subscribe(user => this.host = user);
 
-    // TODO: custom validator
+    // // TODO: custom validator
     this.dinnerForm = this.fb.group({
       title: '',
       streetAddress: ['', Validators.required],
       city: ['', Validators.required],
-      date: [new Date(), Validators.required],
+      date: [moment(), Validators.compose([Validators.required, DateValidator.isTodayOrAfter])],
       attendeesMax: [0, Validators.compose([Validators.required, Validators.min(1)])],
       menu: ['', Validators.required],
       description: [''],
@@ -51,9 +53,9 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
-    const dinner = form.value as Dinner;
+    /* const dinner = form.value as Dinner;
     dinner.host = this.host;
-    this.dinnersActions.addDinner(dinner);
+    this.dinnersActions.addDinner(dinner); */
   }
 
   addSpecificity(tag: string) {

@@ -8,6 +8,7 @@ import { Dinner } from '../../entities/Dinner';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
 import { tassign } from 'tassign';
+import { DateValidator } from '../../validators/date.validator';
 
 @Component({
   selector: 'app-edit-dinner',
@@ -40,7 +41,7 @@ export class EditDinnerComponent implements OnInit, OnDestroy {
       dinnerTitle: this.dinner.title,
       streetAddress: [this.dinner.streetAddress, Validators.required],
       city: [this.dinner.city, Validators.required],
-      date: [new Date(this.dinner.date), Validators.required],
+      date: [new Date(this.dinner.date), Validators.compose([Validators.required, DateValidator.isTodayOrAfter])],
       attendeesMax: [this.dinner.attendeesMax, [Validators.required, Validators.min(1)]],
       menu: [this.dinner.menu, Validators.required],
       description: [this.dinner.description],

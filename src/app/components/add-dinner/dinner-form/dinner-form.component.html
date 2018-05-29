@@ -20,6 +20,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error class="error-message" *ngIf="dinnerForm.controls.date.errors?.required && dinnerForm.controls.date.touched">Please pick a date</mat-error>
+    <mat-error class="error-message" *ngIf="dinnerForm.controls.date.errors?.invalidDate && dinnerForm.controls.date.touched">You can't pick a date that has already happened</mat-error>
   </mat-form-field>
 
   <mat-form-field>
