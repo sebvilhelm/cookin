@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store/store';
+import { RouterService } from './router.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -10,19 +11,21 @@ export class AuthGuardService implements CanActivate {
 
   constructor(
     private router: Router,
-    private ngRedux: NgRedux<IAppState>
+    private ngRedux: NgRedux<IAppState>,
+    private routerService: RouterService
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.checkLogin();
-    // TODO: Store URL??
+    // TODO: Store URL
+    return this.checkLogin(state.url);
   }
 
-  checkLogin() {
+  checkLogin(url: string) {
     this.ngRedux.select(state => state.users.currentUser).subscribe(user => {
       this.isLoggedIn = user ? true : false;
     });
     if (!this.isLoggedIn) {
+      this.routerService.redirectUrl = url;
       this.router.navigate(['login']);
       return false;
     }

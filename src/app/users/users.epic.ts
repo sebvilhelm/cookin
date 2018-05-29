@@ -9,12 +9,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Router } from '@angular/router';
 import { Person } from '../entities/Person';
+import { RouterService } from '../services/router.service';
 
 @Injectable()
 export class UsersEpic {
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private routerService: RouterService
   ) { }
 
   getUsers = (action$: ActionsObservable<any>) => {
@@ -87,9 +89,13 @@ export class UsersEpic {
             }, [])[0];
 
             if (!user) {
-              throw new Error('No user match'); // Throw an error if no user was returned from the server
+              // Throw an error if no user was returned from the server
+              throw new Error('No user match');
             }
-            this.router.navigate(['/']);
+
+            const redirectUrl = this.routerService.redirectUrl || '/';
+
+            this.router.navigate([redirectUrl]);
             return {
               type: UsersActions.LOGIN_USER,
               payload: user

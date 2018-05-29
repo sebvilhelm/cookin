@@ -42,6 +42,7 @@ import { UsersActions } from './users/users.actions';
 import { DinnersActions } from './dinners/dinners.actions';
 import { UsersEpic } from './users/users.epic';
 import { DinnersEpic } from './dinners/dinners.epic';
+import { RouterService } from './services/router.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { DinnersEpic } from './dinners/dinners.epic';
     DinnersActions,
     DinnersService,
     UsersEpic,
-    DinnersEpic
+    DinnersEpic,
+    RouterService
   ],
   bootstrap: [AppComponent]
 })
