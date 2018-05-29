@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { DinnersState } from "./dinners.store";
-import { Dinner } from "../entities/Dinner";
-import * as faker from "faker";
-import { UsersService } from "../users/users.service";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { DinnersState } from './dinners.store';
+import { Dinner } from '../entities/Dinner';
+import * as faker from 'faker';
+import { UsersService } from '../users/users.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DinnersService {
@@ -32,29 +32,29 @@ export class DinnersService {
       attendees: [],
       menu: faker.random.words(),
       description: faker.lorem.sentences(),
-      specifics: ["Vegan", "Lactose Intolerant"]
+      specifics: ['Vegan', 'Lactose Intolerant']
     };
   }
 
   getAutocompleteItems(): string[] {
-    return ["Vegan", "Vegetarian", "Nut Free", "Gluten Free", "Lactose Free"];
+    return ['Vegan', 'Vegetarian', 'Nut Free', 'Gluten Free', 'Lactose Free'];
   }
 
   getDinners(): Observable<Object> {
     return this.http.get(
-      "https://angular-exam-e8c4c.firebaseio.com/dinners.json"
+      'https://angular-exam-e8c4c.firebaseio.com/dinners.json'
     );
   }
 
   addDinner(dinner: Dinner): Observable<Object> {
     dinner.attendees = [];
     return this.http.post(
-      "https://angular-exam-e8c4c.firebaseio.com/dinners.json",
+      'https://angular-exam-e8c4c.firebaseio.com/dinners.json',
       dinner
     );
   }
 
-  updateDinner(dinner: Dinner) {
+  updateDinner(dinner: Dinner): Observable<Object> {
     const { id, ...updatedDinner } = dinner;
     return this.http.patch(
       `https://angular-exam-e8c4c.firebaseio.com/dinners/${id}/.json`,
@@ -62,7 +62,7 @@ export class DinnersService {
     );
   }
 
-  deleteDinner(id: string) {
+  deleteDinner(id: string): Observable<Object> {
     return this.http.delete(
       `https://angular-exam-e8c4c.firebaseio.com/dinners/${id}/.json`
     );
