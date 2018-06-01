@@ -5,6 +5,7 @@ import { browser, element, by } from 'protractor';
 import { Person } from '../src/app/entities/Person';
 import { UsersService } from '../src/app/users/users.service';
 import { DinnersListPage } from './dinners-list.po';
+import { AdminPage } from './admin.po';
 
 describe('Admin flow', () => {
   let user;
@@ -29,20 +30,20 @@ describe('Admin flow', () => {
     await browser.waitForAngular();
     await expect(DinnersListPage.getParagraphText()).toEqual('Find dinners');
   });
-  /*
+
   it('should give access to the admin panel for an admin user', async () => {
-    element(by.id('admin-link')).click();
+    await AdminPage.navigateTo();
     await browser.waitForAngular();
-    expect(element(by.css('app-admin h1')).getText()).toEqual('Admin');
+    expect(AdminPage.getHeaderText()).toEqual('Admin');
   });
 
   it('should successfully delete a user', async () => {
-    element(by.id('admin-link')).click();
+    await AdminPage.navigateTo();
     await browser.waitForAngular();
-    element(by.id('admin-users-link')).click();
+    await AdminPage.navigateToUserPage();
     await browser.waitForAngular();
 
-    expect(element(by.css('app-user-list h2')).getText()).toEqual('All users');
+    expect(AdminPage.getSubPageHeader()).toEqual('All users');
 
     const numberOfUsersBefore = await element
       .all(by.css('.user-list mat-card'))
@@ -55,5 +56,5 @@ describe('Admin flow', () => {
       .count();
 
     expect(numberOfUsersAfter).toEqual(numberOfUsersBefore - 1);
-  }); */
+  });
 });
