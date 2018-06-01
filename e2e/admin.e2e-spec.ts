@@ -27,8 +27,7 @@ describe('Admin flow', () => {
     await browser.waitForAngular();
     await LoginPage.login(user);
     await browser.waitForAngular();
-    console.log(DinnersListPage.getParagraphText());
-    // await expect(DinnersListPage.getParagraphText()).toEqual('Find dinners');
+    await expect(DinnersListPage.getParagraphText()).toEqual('Find dinners');
   });
   /*
   it('should give access to the admin panel for an admin user', async () => {

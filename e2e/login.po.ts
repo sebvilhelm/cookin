@@ -9,7 +9,7 @@ export class LoginPage {
   static async login(user: Person) {
     await Promise.all<any>([
       element(by.css('input[name="email"]')).sendKeys(user.email),
-      element(by.css('input[name="password"]')).sendKeys('')
+      element(by.css('input[name="password"]')).sendKeys('pass')
     ]);
     return element(by.css('button[type="submit"]')).click();
   }
