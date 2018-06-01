@@ -1,9 +1,9 @@
-import { RegisterPage } from './register.po';
-import { LoginPage } from './login.po';
-
 import { browser, element, by } from 'protractor';
+
 import { Person } from '../src/app/entities/Person';
 import { UsersService } from '../src/app/users/users.service';
+import { RegisterPage } from './register.po';
+import { LoginPage } from './login.po';
 import { DinnersListPage } from './dinners-list.po';
 import { AdminPage } from './admin.po';
 
@@ -12,7 +12,7 @@ describe('Admin flow', () => {
 
   beforeAll(() => {
     user = UsersService.getMockUser();
-    browser.get('/dinners');
+    browser.get('/');
   });
 
   it('should create an admin user', async () => {
