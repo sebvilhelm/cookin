@@ -5,12 +5,9 @@ import { Person } from '../entities/Person';
 import * as faker from 'faker';
 import { Observable } from 'rxjs/Observable';
 
-
 @Injectable()
 export class UsersService {
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   static getInitalState(): UsersState {
     return {
@@ -26,7 +23,7 @@ export class UsersService {
       email: faker.internet.email(),
       dateOfBirth: new Date(faker.date.past()),
       area: faker.address.city(),
-      requirements: ['Nut Allergy'],
+      requirements: ['Nut Allergy', 'Vegetarian'],
       isAdmin: false
     };
   }
@@ -37,23 +34,32 @@ export class UsersService {
       'Vegetarian',
       'Nut Allergy',
       'Gluten Allergy',
-      'Lactose Intolerant',
+      'Lactose Intolerant'
     ];
   }
 
   getUsers(): Observable<Object> {
-    return this.http.get('https://angular-exam-e8c4c.firebaseio.com/users.json');
+    return this.http.get(
+      'https://angular-exam-e8c4c.firebaseio.com/users.json'
+    );
   }
 
   addUser(user): Observable<Object> {
-    return this.http.post('https://angular-exam-e8c4c.firebaseio.com/users.json', user);
+    return this.http.post(
+      'https://angular-exam-e8c4c.firebaseio.com/users.json',
+      user
+    );
   }
 
   deleteUser(id: string): Observable<Object> {
-    return this.http.delete(`https://angular-exam-e8c4c.firebaseio.com/users/${id}/.json`);
+    return this.http.delete(
+      `https://angular-exam-e8c4c.firebaseio.com/users/${id}/.json`
+    );
   }
 
   getUserByEmail(email: string): Observable<Object> {
-    return this.http.get(`https://angular-exam-e8c4c.firebaseio.com/users.json?orderBy="email"&equalTo="${email}"`);
+    return this.http.get(
+      `https://angular-exam-e8c4c.firebaseio.com/users.json?orderBy="email"&equalTo="${email}"`
+    );
   }
 }
