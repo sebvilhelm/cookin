@@ -45,15 +45,11 @@ describe('Admin flow', () => {
 
     expect(AdminPage.getSubPageHeader()).toEqual('All users');
 
-    const numberOfUsersBefore = await element
-      .all(by.css('.user-list mat-card'))
-      .count();
+    const numberOfUsersBefore = await AdminPage.getAllUserCards().count();
 
-    element(by.css('mat-card mat-card-actions .delete-button')).click();
+    await AdminPage.clickFirstUserDeleteButton();
 
-    const numberOfUsersAfter = await element
-      .all(by.css('.user-list mat-card'))
-      .count();
+    const numberOfUsersAfter = await AdminPage.getAllUserCards().count();
 
     expect(numberOfUsersAfter).toEqual(numberOfUsersBefore - 1);
   });

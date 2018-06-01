@@ -16,4 +16,15 @@ export class AdminPage {
   static getSubPageHeader() {
     return element(by.css('app-user-list h2')).getText();
   }
+
+  static getAllUserCards() {
+    return element.all(by.css('.user-list mat-card'));
+  }
+
+  static clickFirstUserDeleteButton() {
+    return element
+      .all(by.css('mat-card mat-card-actions .delete-button'))
+      .first()
+      .click();
+  }
 }
