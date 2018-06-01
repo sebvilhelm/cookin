@@ -1,11 +1,7 @@
-import { browser, by, element } from 'protractor';
+import { by, element } from 'protractor';
 
 export class DinnersListPage {
-  navigateTo() {
-    return browser.get('/dinners');
-  }
-
-  getParagraphText() {
-    return element(by.css('app-dinners-list h1')).getText();
+  static async getParagraphText() {
+    return await element(by.css('app-dinners-list h1')).getText();
   }
 }
