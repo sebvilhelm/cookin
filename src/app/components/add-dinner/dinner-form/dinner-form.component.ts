@@ -53,9 +53,9 @@ export class DinnerFormComponent implements OnInit, OnDestroy {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) { return; }
-    /* const dinner = form.value as Dinner;
+    const dinner = form.value as Dinner;
     dinner.host = this.host;
-    this.dinnersActions.addDinner(dinner); */
+    this.dinnersActions.addDinner(dinner);
   }
 
   addSpecificity(tag: string) {
